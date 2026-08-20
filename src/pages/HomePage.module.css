@@ -10,11 +10,14 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: .11;
-  background-image:
-    repeating-radial-gradient(ellipse at 72% 8%, transparent 0 23px, color-mix(in oklab,var(--moss-400) 24%,transparent) 24px 25px, transparent 26px 48px),
-    repeating-radial-gradient(ellipse at 8% 78%, transparent 0 31px, color-mix(in oklab,var(--accent) 16%,transparent) 32px 33px, transparent 34px 64px);
-  mask-image: linear-gradient(to bottom, black, transparent 92%);
+  opacity: .055;
+  background-image: repeating-radial-gradient(
+    ellipse at 48% 104%,
+    transparent 0 56px,
+    color-mix(in oklab,var(--moss-400) 28%,transparent) 57px 58px,
+    transparent 59px 112px
+  );
+  mask-image: linear-gradient(to bottom, transparent 0 66%, black 82%, transparent 100%);
 }
 
 .hero,
@@ -39,7 +42,7 @@
 .hero h1 {
   display: grid;
   gap: .01em;
-  margin: 0 0 1.3rem;
+  margin: 0 0 1.5rem;
   color: var(--fg);
   font-size: clamp(3.05rem, 4.4vw, 3.75rem);
   font-weight: 750;
@@ -58,15 +61,15 @@
   max-width: 40ch;
   margin-bottom: 0;
   color: color-mix(in oklab, var(--sand-200) 76%, transparent);
-  font-size: .88rem;
-  line-height: 1.58;
+  font-size: .85rem;
+  line-height: 1.64;
 }
 
 .heroActions {
   display: flex;
   flex-wrap: nowrap;
   gap: .7rem;
-  margin-top: 1.55rem;
+  margin-top: 1.65rem;
 }
 
 .heroActions :global(.button) {
@@ -260,6 +263,8 @@
   display: block;
   min-width: 0;
   height: 100%;
+  overflow: hidden;
+  border-radius: .55rem;
 }
 .podcastDetails {
   display: flex;
