@@ -1,0 +1,114 @@
+.reference {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  background: #081510;
+}
+
+.canvas {
+  position: relative;
+  width: min(100vw, 1700px);
+  margin-inline: auto;
+  aspect-ratio: 1418 / 1724;
+  overflow: hidden;
+  background: #081510;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.current,
+.hotspots {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.current { pointer-events: none; }
+
+.pulse {
+  fill: none;
+  stroke: url(#exact-current);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: .075 .925;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  animation: currentFlow 18s linear infinite;
+}
+
+.halo {
+  stroke-width: 8;
+  opacity: 0;
+  filter: blur(5px);
+}
+
+.core {
+  stroke-width: 2.6;
+}
+
+.route2 .pulse { animation-delay: 6s; }
+.route3 .pulse { animation-delay: 12s; }
+
+.summit {
+  fill: #081510;
+  stroke: #ffe0a3;
+  stroke-width: 2;
+  transform-origin: 900px 201px;
+  opacity: .18;
+  animation: summitFlare 6s ease-out infinite;
+}
+
+.hotspots { pointer-events: none; }
+.hotspots a {
+  position: absolute;
+  display: block;
+  pointer-events: auto;
+  border-radius: .35rem;
+  outline-offset: 2px;
+}
+.hotspots a:focus-visible {
+  outline: 2px solid #e99743;
+  background: rgba(233, 151, 67, .08);
+}
+
+@keyframes currentFlow {
+  0%, 2% { opacity: 0; stroke-dashoffset: 1; }
+  4% { opacity: .9; }
+  26% { opacity: 1; stroke-dashoffset: 0; }
+  31%, 100% { opacity: 0; stroke-dashoffset: -.075; }
+}
+
+@keyframes summitFlare {
+  0%, 73% { opacity: .18; transform: scale(1); }
+  82% { opacity: 1; transform: scale(2.1); }
+  91% { opacity: .65; transform: scale(1.25); }
+  100% { opacity: .18; transform: scale(1); }
+}
+
+@media (min-width: 1000px) {
+  .reference { display: block; }
+}
+
+@media (min-width: 1701px) {
+  .reference { padding-inline: calc((100vw - 1700px) / 2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    animation: none;
+    opacity: .12;
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+  .halo { opacity: .05; }
+  .summit { animation: none; opacity: .35; }
+}
