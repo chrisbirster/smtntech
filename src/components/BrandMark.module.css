@@ -4,3 +4,9 @@
 .brand span { display: grid; min-width: max-content; line-height: 1; }
 .brand strong { font-size: 0.86rem; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
 .brand small { margin-top: 0.34rem; color: var(--muted); font: 650 0.65rem/1 var(--font-mono); letter-spacing: 0.24em; text-transform: uppercase; white-space: nowrap; }
+@media (max-width: 1220px) {
+  .brand { gap: .5rem; }
+  .mark { width: 2.1rem; }
+  .brand strong { font-size: .74rem; letter-spacing: .1em; }
+  .brand small { margin-top: .28rem; font-size: .54rem; letter-spacing: .2em; }
+}
