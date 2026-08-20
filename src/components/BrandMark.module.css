@@ -1,0 +1,6 @@
+.brand { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--fg); text-decoration: none; }
+.mark { width: 2.45rem; color: var(--accent); }
+.mark path, .mark circle { fill: none; stroke: currentColor; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+.brand span { display: grid; line-height: 1; }
+.brand strong { font-size: 0.86rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.brand small { margin-top: 0.34rem; color: var(--muted); font: 650 0.65rem/1 var(--font-mono); letter-spacing: 0.24em; text-transform: uppercase; }

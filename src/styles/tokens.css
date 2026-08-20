@@ -1,0 +1,61 @@
+@layer tokens {
+  :root {
+    --forest-h: 151;
+    --moss-h: 119;
+    --copper-h: 61;
+    --sand-h: 84;
+    --ink-950: oklch(13% 0.025 var(--forest-h));
+    --ink-900: oklch(17% 0.03 var(--forest-h));
+    --ink-850: oklch(20% 0.032 var(--forest-h));
+    --ink-800: oklch(23% 0.034 var(--forest-h));
+    --ink-700: oklch(30% 0.036 var(--forest-h));
+    --moss-500: oklch(68% 0.13 var(--moss-h));
+    --moss-400: oklch(76% 0.12 var(--moss-h));
+    --copper-500: oklch(69% 0.13 var(--copper-h));
+    --copper-400: oklch(77% 0.12 var(--copper-h));
+    --sand-100: oklch(93% 0.035 var(--sand-h));
+    --sand-200: oklch(87% 0.03 var(--sand-h));
+    --sand-300: oklch(77% 0.025 var(--sand-h));
+    --bg: var(--ink-950);
+    --bg-elevated: color-mix(in oklab, var(--ink-850) 88%, black);
+    --bg-soft: color-mix(in oklab, var(--ink-900) 85%, var(--moss-500) 4%);
+    --fg: var(--sand-100);
+    --muted: color-mix(in oklab, var(--sand-200) 66%, transparent);
+    --line: color-mix(in oklab, var(--moss-400) 20%, transparent);
+    --line-strong: color-mix(in oklab, var(--moss-400) 38%, transparent);
+    --accent: var(--copper-500);
+    --accent-strong: var(--copper-400);
+    --success: var(--moss-400);
+    --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    --step--1: clamp(0.78rem, 0.75rem + 0.12vw, 0.9rem);
+    --step-0: clamp(0.98rem, 0.9rem + 0.25vw, 1.12rem);
+    --step-1: clamp(1.2rem, 1.08rem + 0.42vw, 1.45rem);
+    --step-2: clamp(1.55rem, 1.25rem + 0.95vw, 2.05rem);
+    --step-3: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+    --step-4: clamp(2.65rem, 1.7rem + 3.2vw, 5.25rem);
+    --space-1: clamp(0.45rem, 0.35rem + 0.25vw, 0.65rem);
+    --space-2: clamp(0.8rem, 0.65rem + 0.45vw, 1.1rem);
+    --space-3: clamp(1.1rem, 0.85rem + 0.8vw, 1.65rem);
+    --space-4: clamp(1.6rem, 1.2rem + 1.2vw, 2.4rem);
+    --space-5: clamp(2.3rem, 1.6rem + 2vw, 4rem);
+    --space-6: clamp(3.5rem, 2.4rem + 3.4vw, 6.5rem);
+    --radius-sm: 0.6rem;
+    --radius-md: 0.95rem;
+    --radius-lg: 1.35rem;
+    --shadow-deep: 0 30px 80px oklch(5% 0.02 var(--forest-h) / 0.38);
+    --page: min(1180px, calc(100vw - 2rem));
+  }
+  [data-theme="light"] {
+    --bg: oklch(96% 0.018 var(--sand-h));
+    --bg-elevated: white;
+    --bg-soft: oklch(93% 0.025 var(--sand-h));
+    --fg: oklch(20% 0.035 var(--forest-h));
+    --muted: oklch(44% 0.03 var(--forest-h));
+    --line: oklch(70% 0.05 var(--forest-h) / 0.45);
+    --line-strong: oklch(55% 0.06 var(--forest-h) / 0.5);
+    --accent: oklch(60% 0.14 var(--copper-h));
+    --accent-strong: oklch(53% 0.15 var(--copper-h));
+    --success: oklch(54% 0.13 var(--moss-h));
+  }
+}

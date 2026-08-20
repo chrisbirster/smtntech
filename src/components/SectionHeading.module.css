@@ -1,0 +1,5 @@
+.heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: var(--space-4); }
+.heading h2 { margin-bottom: .55rem; font-size: var(--step-3); }
+.heading p { max-width: 62ch; margin: 0; }
+.heading > a { flex: 0 0 auto; color: var(--accent); font: 700 .78rem var(--font-mono); text-decoration: none; }
+@media (max-width: 650px) { .heading { align-items: start; flex-direction: column; gap: .6rem; } }
