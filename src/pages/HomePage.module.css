@@ -317,8 +317,8 @@
 
 @media (max-width: 900px) {
   .hero, .activity, .editorial { width: min(100% - 2rem, 820px); }
-  .hero { min-height: auto; padding-top: 2.2rem; }
-  .heroCopy { width: 100%; max-width: 39rem; }
+  .hero { display: flex; flex-direction: column; min-height: auto; padding-top: 2.2rem; }
+  .heroCopy { order: -1; width: 100%; max-width: 39rem; }
   .hero h1 { font-size: clamp(3rem, 8.4vw, 4.5rem); }
   .hero h1 > span { white-space: normal; }
   .heroCopy > p { max-width: 56ch; font-size: .95rem; }
