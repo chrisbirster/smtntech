@@ -12,28 +12,31 @@ async function prepare(page: import("@playwright/test").Page) {
   await page.evaluate(async () => {
     await document.fonts.ready;
   });
+  // Capture the electric-current animation while a route is visibly active.
+  await page.waitForTimeout(1400);
 }
 
-test("homepage at generated-mockup viewport", async ({ page }) => {
-  await page.setViewportSize({ width: 1122, height: 1402 });
-  await prepare(page);
-  await page.screenshot({
-    path: `${artifactDir}/homepage-1122x1402.png`,
-    fullPage: false,
-  });
-});
+const viewports = [
+  { name: "phone", width: 390, height: 844 },
+  { name: "tablet", width: 768, height: 1024 },
+  { name: "desktop", width: 1440, height: 900 },
+  { name: "desktop-wide", width: 1920, height: 1080 },
+  { name: "ultrawide", width: 2560, height: 1440 },
+] as const;
 
-test("homepage at desktop review viewport", async ({ page }) => {
-  await page.setViewportSize({ width: 1534, height: 926 });
-  await prepare(page);
-  await page.screenshot({
-    path: `${artifactDir}/homepage-1534x926.png`,
-    fullPage: false,
+for (const viewport of viewports) {
+  test(`homepage ${viewport.name}`, async ({ page }) => {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    await prepare(page);
+    await page.screenshot({
+      path: `${artifactDir}/homepage-${viewport.name}-${viewport.width}x${viewport.height}.png`,
+      fullPage: false,
+    });
   });
-});
+}
 
 test("homepage full page", async ({ page }) => {
-  await page.setViewportSize({ width: 1122, height: 1402 });
+  await page.setViewportSize({ width: 1440, height: 900 });
   await prepare(page);
   await page.screenshot({
     path: `${artifactDir}/homepage-full.png`,
