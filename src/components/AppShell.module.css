@@ -5,13 +5,14 @@
 .announcement a { float: right; color: var(--accent); }
 .header { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--line); background: color-mix(in oklab, var(--bg) 84%, transparent); backdrop-filter: blur(18px) saturate(130%); }
 .headerInner { min-height: 5rem; display: flex; gap: 1rem; align-items: center; justify-content: space-between; }
-.desktopNav { display: flex; gap: clamp(.6rem, 1.4vw, 1.25rem); align-items: center; }
-.desktopNav a { position: relative; padding-block: 1.7rem; color: var(--muted); font-size: .82rem; font-weight: 680; text-decoration: none; white-space: nowrap; }
+.desktopNav { display: flex; gap: clamp(.55rem, 1.15vw, 1.1rem); align-items: center; }
+.desktopNav a { position: relative; padding-block: 1.7rem; color: var(--muted); font-size: .8rem; font-weight: 680; text-decoration: none; white-space: nowrap; }
 .desktopNav a::after { content: ""; position: absolute; inset: auto 0 1rem; height: 2px; scale: 0 1; background: var(--accent); transform-origin: left; transition: scale 150ms ease; }
 .desktopNav a:hover, .desktopNav a.active { color: var(--fg); }
 .desktopNav a:hover::after, .desktopNav a.active::after { scale: 1 1; }
-.actions { display: flex; gap: .45rem; align-items: center; }
-.iconButton, .menuButton { min-width: 2.55rem; min-height: 2.55rem; display: inline-grid; place-items: center; border: 1px solid var(--line); border-radius: .65rem; background: transparent; color: var(--fg); font: 700 .72rem var(--font-mono); text-decoration: none; cursor: pointer; }
+.actions { display: flex; flex: 0 0 auto; gap: .4rem; align-items: center; }
+.iconButton, .menuButton { min-width: 2.45rem; min-height: 2.45rem; display: inline-grid; place-items: center; border: 1px solid var(--line); border-radius: .65rem; background: transparent; color: var(--fg); font: 700 .7rem var(--font-mono); text-decoration: none; cursor: pointer; }
+.actions :global(.button) { min-height: 2.65rem; padding: .65rem .9rem; white-space: nowrap; }
 .menuButton { display: none; padding-inline: .7rem; }
 .mobileNav { display: none; }
 .main { overflow: clip; }
@@ -24,5 +25,13 @@
 .footerGrid a { color: var(--muted); text-decoration: none; font-size: .9rem; }
 .footerGrid a:hover { color: var(--fg); }
 .footerBottom { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; border-top: 1px solid var(--line); color: var(--muted); font: 600 .7rem var(--font-mono); }
-@media (max-width: 1060px) { .desktopNav { display: none; } .menuButton { display: inline-grid; } .mobileNav { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .35rem; width: var(--page); margin-inline: auto; padding-bottom: 1rem; } .mobileNav a { padding: .75rem; border: 1px solid var(--line); border-radius: .6rem; text-decoration: none; } }
+@media (max-width: 1220px) {
+  .headerInner { gap: .55rem; }
+  .desktopNav { gap: .52rem; }
+  .desktopNav a { font-size: .72rem; }
+  .actions { gap: .3rem; }
+  .iconButton { min-width: 2.25rem; min-height: 2.25rem; font-size: .64rem; }
+  .actions :global(.button) { min-height: 2.45rem; padding: .55rem .72rem; font-size: .75rem; }
+}
+@media (max-width: 1020px) { .desktopNav { display: none; } .menuButton { display: inline-grid; } .mobileNav { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .35rem; width: var(--page); margin-inline: auto; padding-bottom: 1rem; } .mobileNav a { padding: .75rem; border: 1px solid var(--line); border-radius: .6rem; text-decoration: none; } }
 @media (max-width: 700px) { .announcement a { display: none; } .actions > :global(.button) { display: none; } .footerGrid { grid-template-columns: 1fr 1fr; } .footerBrand { grid-column: 1 / -1; } .footerBottom { flex-direction: column; } }
