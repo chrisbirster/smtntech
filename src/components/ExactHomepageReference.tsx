@@ -1,10 +1,12 @@
 import reference from "../assets/homepage-reference.avif";
 import styles from "./ExactHomepageReference.module.css";
 
+// These paths are traced over circuit lines that already exist in the mockup image.
+// The raster artwork remains untouched; only the moving current is SVG.
 const routes = [
-  "M505 680 L570 680 L570 645 L630 645 L630 610 L690 610 L690 575 L742 575 L742 530 L790 530 L790 485 L830 485 L830 430 L856 430 L856 374 L882 374 L882 315 L900 315 L900 257 L884 257 L884 197",
-  "M745 720 L745 675 L780 675 L780 630 L815 630 L815 585 L846 585 L846 535 L870 535 L870 485 L892 485 L892 430 L910 430 L910 375 L925 375 L925 320 L915 320 L915 266 L900 266 L900 214",
-  "M1082 686 L1030 686 L1030 650 L990 650 L990 610 L956 610 L956 565 L930 565 L930 520 L910 520 L910 474 L895 474 L895 425 L884 425 L884 375 L875 375 L875 325 L872 325 L872 275 L878 275 L878 228 L884 228 L884 197"
+  "M730 796 L780 766 L830 736 L900 706 L900 636 L870 596 L870 566 L920 566 L975 536 L1030 536 L1030 491 L990 456 L990 416 L945 396 L945 356 L920 331 L920 301 L950 281 L950 246 L920 226 L900 201",
+  "M610 696 L650 670 L700 642 L750 610 L790 576 L820 540 L850 508 L875 478 L895 446 L895 410 L915 385 L915 350 L900 326 L900 286 L885 268 L885 229 L900 201",
+  "M1130 726 L1090 696 L1050 661 L1050 616 L1010 586 L1010 546 L980 526 L980 486 L950 456 L950 416 L930 396 L930 356 L920 331 L900 316 L900 276 L885 261 L885 226 L900 201"
 ];
 
 const hotspots = [
@@ -32,28 +34,33 @@ export default function ExactHomepageReference() {
     <section class={styles.reference} aria-label="South Mountain Technologies homepage">
       <div class={styles.canvas}>
         <img class={styles.image} src={reference} alt="" aria-hidden="true" />
+
         <svg class={styles.current} viewBox="0 0 1418 1724" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="exact-current" x1="0" y1="1" x2="0" y2="0">
-              <stop offset="0" stop-color="#9db94a" />
-              <stop offset=".55" stop-color="#dd8a34" />
-              <stop offset="1" stop-color="#ffe0a3" />
+              <stop offset="0" stop-color="#93b94a" />
+              <stop offset=".5" stop-color="#e58c38" />
+              <stop offset="1" stop-color="#ffe4ae" />
             </linearGradient>
-            <filter id="exact-glow" x="-100%" y="-100%" width="300%" height="300%">
-              <feGaussianBlur stdDeviation="4" result="blur" />
+            <filter id="exact-glow" x="-150%" y="-150%" width="400%" height="400%">
+              <feGaussianBlur stdDeviation="4.6" result="blur" />
               <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
             </filter>
           </defs>
-          {routes.map((route, index) => (
-            <path
-              d={route}
-              pathLength="1"
-              class={`${styles.pulse} ${styles[`route${index + 1}` as keyof typeof styles]}`}
-              filter="url(#exact-glow)"
-            />
-          ))}
-          <circle class={styles.summit} cx="884" cy="197" r="5" filter="url(#exact-glow)" />
+
+          {routes.map((route, index) => {
+            const routeClass = styles[`route${index + 1}` as keyof typeof styles];
+            return (
+              <g class={routeClass}>
+                <path d={route} pathLength="1" class={`${styles.pulse} ${styles.halo}`} />
+                <path d={route} pathLength="1" class={`${styles.pulse} ${styles.core}`} filter="url(#exact-glow)" />
+              </g>
+            );
+          })}
+
+          <circle class={styles.summit} cx="900" cy="201" r="5" filter="url(#exact-glow)" />
         </svg>
+
         <nav class={styles.hotspots} aria-label="Homepage links">
           {hotspots.map(([label, href, left, top, width, height]) => (
             <a
