@@ -25,6 +25,11 @@
 .footerGrid a { color: var(--muted); text-decoration: none; font-size: .9rem; }
 .footerGrid a:hover { color: var(--fg); }
 .footerBottom { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; border-top: 1px solid var(--line); color: var(--muted); font: 600 .7rem var(--font-mono); }
+
+@media (min-width: 1000px) {
+  .homeLiveShell { display: none; }
+}
+
 @media (max-width: 1220px) {
   .headerInner { gap: .55rem; }
   .desktopNav { gap: .48rem; }
