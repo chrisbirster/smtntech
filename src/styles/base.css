@@ -4,13 +4,15 @@
   html[data-theme="light"] { color-scheme: light; }
   body {
     margin: 0; min-width: 320px; min-height: 100vh; color: var(--fg);
-    background: radial-gradient(circle at 84% -15%, color-mix(in oklab, var(--moss-500) 13%, transparent), transparent 30rem), linear-gradient(180deg, color-mix(in oklab, var(--bg) 95%, black), var(--bg));
+    background:
+      radial-gradient(circle at 68% 2%, color-mix(in oklab, oklch(29% .045 164) 18%, transparent), transparent 34rem),
+      linear-gradient(180deg, oklch(13.5% .025 164), var(--bg));
     font-family: var(--font-sans); font-size: var(--step-0); line-height: 1.65; -webkit-font-smoothing: antialiased;
   }
   body::before {
-    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.18;
-    background-image: repeating-radial-gradient(ellipse at 20% 10%, transparent 0 18px, color-mix(in oklab, var(--moss-400) 16%, transparent) 19px 20px, transparent 21px 38px);
-    mask-image: linear-gradient(to bottom, black, transparent 76%);
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.07;
+    background-image: repeating-radial-gradient(ellipse at 18% 9%, transparent 0 20px, color-mix(in oklab, var(--moss-400) 13%, transparent) 21px 22px, transparent 23px 43px);
+    mask-image: linear-gradient(to bottom, black, transparent 72%);
   }
   button, input, textarea, select { font: inherit; }
   button, a { -webkit-tap-highlight-color: transparent; }
