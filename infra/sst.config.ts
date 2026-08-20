@@ -1,7 +1,5 @@
 /// <reference path="./.sst/platform/config.d.ts" />
 
-import * as pulumi from "@pulumi/pulumi";
-
 export default $config({
   app(input) {
     const cloudflareApiToken = (process.env.CLOUDFLARE_API_TOKEN || "").trim();
@@ -16,6 +14,7 @@ export default $config({
     };
   },
   async run() {
+    const pulumi = await import("@pulumi/pulumi");
     const region = (process.env.AWS_REGION ?? "us-east-1").trim();
     const domain = (process.env.SMT_DOMAIN ?? "southmountaintech.com").trim();
     const fromAddress = (process.env.SMT_FROM_ADDRESS ?? `chris@${domain}`).trim();
