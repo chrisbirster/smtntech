@@ -1,9 +1,8 @@
-import { A } from "@solidjs/router";
 import styles from "./BrandMark.module.css";
 
 export default function BrandMark() {
   return (
-    <A href="/" class={styles.brand} aria-label="South Mountain Technologies home">
+    <a href="/" class={styles.brand} aria-label="South Mountain Technologies home">
       <svg class={styles.mark} viewBox="0 0 64 54" aria-hidden="true">
         <path d="M4 47 24 16l9 14 7-10 20 27" />
         <path d="m10 47 14-22 8 13 8-12 14 21" />
@@ -11,6 +10,6 @@ export default function BrandMark() {
         <circle cx="32" cy="6" r="2" />
       </svg>
       <span><strong>South Mountain</strong><small>Technologies</small></span>
-    </A>
+    </a>
   );
 }

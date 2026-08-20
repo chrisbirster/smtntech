@@ -1,5 +1,5 @@
 import { render } from "@solidjs/web";
-import { Route, Router } from "@solidjs/router";
+import { createRouter } from "@solidjs/router";
 import AppShell from "./components/AppShell";
 import HomePage from "./pages/HomePage";
 import PodcastPage from "./pages/PodcastPage";
@@ -16,31 +16,36 @@ import DetailPage from "./pages/DetailPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import "./styles/index.css";
 
-const root = document.getElementById("app");
+const AppRouter = createRouter({
+  routes: [
+    { path: "/", component: HomePage },
+    { path: "/podcast", component: PodcastPage },
+    { path: "/podcast/:slug", component: DetailPage },
+    { path: "/articles", component: ArticlesPage },
+    { path: "/articles/:slug", component: DetailPage },
+    { path: "/projects", component: ProjectsPage },
+    { path: "/projects/:slug", component: DetailPage },
+    { path: "/showcase", component: ShowcasePage },
+    { path: "/events", component: EventsPage },
+    { path: "/events/:slug", component: DetailPage },
+    { path: "/community", component: CommunityPage },
+    { path: "/notes", component: NotesPage },
+    { path: "/client-work", component: ClientWorkPage },
+    { path: "/client-work/:slug", component: DetailPage },
+    { path: "/about", component: AboutPage },
+    { path: "/join", component: JoinPage },
+    { path: "*404", component: NotFoundPage },
+  ],
+});
 
+const root = document.getElementById("app");
 if (!root) throw new Error("Missing #app root element");
 
 render(
   () => (
-    <Router root={AppShell}>
-      <Route path="/" component={HomePage} />
-      <Route path="/podcast" component={PodcastPage} />
-      <Route path="/podcast/:slug" component={DetailPage} />
-      <Route path="/articles" component={ArticlesPage} />
-      <Route path="/articles/:slug" component={DetailPage} />
-      <Route path="/projects" component={ProjectsPage} />
-      <Route path="/projects/:slug" component={DetailPage} />
-      <Route path="/showcase" component={ShowcasePage} />
-      <Route path="/events" component={EventsPage} />
-      <Route path="/events/:slug" component={DetailPage} />
-      <Route path="/community" component={CommunityPage} />
-      <Route path="/notes" component={NotesPage} />
-      <Route path="/client-work" component={ClientWorkPage} />
-      <Route path="/client-work/:slug" component={DetailPage} />
-      <Route path="/about" component={AboutPage} />
-      <Route path="/join" component={JoinPage} />
-      <Route path="*404" component={NotFoundPage} />
-    </Router>
+    <AppRouter>
+      {props => <AppShell>{props.children}</AppShell>}
+    </AppRouter>
   ),
   root,
 );
