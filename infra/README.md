@@ -22,8 +22,8 @@ SES owns outbound authentication only; Cloudflare continues to own inbound MX ro
 ```bash
 cd infra
 cp .env.example .env
-bun install
-bun run check
+npm install
+npm run check
 ```
 
 Add AWS credentials to your shell and populate the Cloudflare API token/account ID in `.env`.
@@ -39,7 +39,7 @@ SMT_EMAIL_ROUTING_READY=false
 Then:
 
 ```bash
-bun run deploy:production
+npm run deploy:production
 ```
 
 This creates the SES identity/DKIM records, the SMTP principal/secret, the website (unless disabled), and the Cloudflare forwarding destination. Cloudflare sends a verification message to `christopher.birster+smtntech@gmail.com`.
@@ -52,7 +52,13 @@ After clicking the destination verification link in Gmail:
 SMT_EMAIL_ROUTING_READY=true
 ```
 
-Deploy again. Cloudflare Email Routing is enabled and the literal route for `chris@southmountaintech.com` is created.
+Deploy again:
+
+```bash
+npm run deploy:production
+```
+
+Cloudflare Email Routing is enabled and the literal route for `chris@southmountaintech.com` is created.
 
 ## Get Gmail SMTP credentials
 
