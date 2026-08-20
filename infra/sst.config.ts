@@ -27,7 +27,7 @@ export default $config({
 
     const zone = await cloudflare.getZone({ filter: { match: "all", name: domain, account: { id: cloudflareAccountId } } });
     const email = new sst.aws.Email("SouthMountainEmail", { sender: domain, dns: sst.cloudflare.dns(), dmarc: "v=DMARC1; p=none;" });
-    const website = deploySite ? new sst.cloudflare.StaticSite("Website", { path: "..", build: { command: "bun run build", output: "dist" }, domain, errorPage: "index.html" }) : undefined;
+    const website = deploySite ? new sst.cloudflare.StaticSite("Website", { path: "..", build: { command: "npm run build", output: "dist" }, domain, errorPage: "index.html" }) : undefined;
     const destination = new cloudflare.EmailRoutingAddress("ChrisGmailDestination", { accountId: cloudflareAccountId, email: forwardTo });
 
     let routingRule: cloudflare.EmailRoutingRule | undefined;
