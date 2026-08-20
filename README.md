@@ -7,7 +7,7 @@ Community website and infrastructure for `southmountaintech.com`.
 - SolidJS `2.0.0-rc.0`
 - `@solidjs/web` `2.0.0-rc.0`
 - Solid Router `2.0.0-next.16`
-- Vite + `@solidjs/vite-plugin` `3.0.0-next.27`
+- Vite + `@solidjs/vite-plugin` `3.0.0-next.29`
 - TypeScript + custom CSS Modules
 - SST v3 + Cloudflare + AWS SES
 - Node.js 22+ with npm
