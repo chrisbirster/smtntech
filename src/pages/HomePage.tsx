@@ -6,11 +6,11 @@ import { articles, clients, episodes, projects, showcase } from "../data/content
 import styles from "./HomePage.module.css";
 
 const communityActivity = [
-  { initials: "CB", label: "Chris proposed", detail: "CoolShell", meta: "open community project", tone: "green" },
-  { initials: "SM", label: "Topic suggestions", detail: "are open", meta: "help shape the Devcast", tone: "orange" },
-  { initials: "GH", label: "Meeting notes", detail: "live on GitHub", meta: "open by default", tone: "green" },
-  { initials: "PA", label: "Local meetup", detail: "planning started", meta: "venue + format wanted", tone: "orange" },
-  { initials: "YOU", label: "Your project", detail: "belongs here", meta: "show us what you build", tone: "green" },
+  { icon: "◉", label: "Community", detail: "Founding members wanted", meta: "help shape what comes next", tone: "green" },
+  { icon: "#", label: "Devcast", detail: "Topic suggestions open", meta: "monthly show in development", tone: "orange" },
+  { icon: "⑂", label: "Open source", detail: "CoolShell is forming", meta: "contributors welcome", tone: "green" },
+  { icon: "⌖", label: "Meetup", detail: "Planning is underway", meta: "venue + format wanted", tone: "orange" },
+  { icon: "↗", label: "Showcase", detail: "Share what you build", meta: "unfinished projects welcome", tone: "green" },
 ] as const;
 
 export default function HomePage() {
@@ -18,17 +18,6 @@ export default function HomePage() {
 
   return <>
     <section class={`container ${styles.hero}`}>
-      <div class={styles.heroCopy}>
-        <span class="eyebrow">South Mountain, Pennsylvania</span>
-        <h1>Build locally.<br />Share openly.<br /><em>Geek out together.</em></h1>
-        <p class="lede">South Mountain Technologies is a developer community for South Mountain, Pennsylvania. We build software, share knowledge, and lift each other up — online and in person.</p>
-        <div class={styles.heroActions}>
-          <a class="button" data-variant="primary" href="/join"><span aria-hidden="true">⌘</span> Join the Community</a>
-          <a class="button" href="/events"><span aria-hidden="true">▣</span> See Upcoming Events</a>
-        </div>
-        <a class={styles.workLink} href="/client-work">Have something to build? Work with us →</a>
-      </div>
-
       <div class={styles.heroVisual}>
         <MountainArt />
         <aside class={styles.statusPanel} aria-label="Community status">
@@ -38,13 +27,24 @@ export default function HomePage() {
           <div><span class={styles.statusIcon}>&lt;/&gt;</span><span>GitHub projects</span><strong>Open to contributors</strong><i /></div>
         </aside>
       </div>
+
+      <div class={styles.heroCopy}>
+        <span class="eyebrow">South Mountain, Pennsylvania</span>
+        <h1>Build locally.<br />Share openly.<br /><em>Geek out together.</em></h1>
+        <p class="lede">South Mountain Technologies is a developer community for South Mountain, Pennsylvania. We build software, share knowledge, and lift each other up—online and in person. All experience levels, all kinds of projects, one mountain.</p>
+        <div class={styles.heroActions}>
+          <a class="button" data-variant="primary" href="/join"><span aria-hidden="true">◎</span> Join the Community</a>
+          <a class="button" href="/events"><span aria-hidden="true">▣</span> See Upcoming Events</a>
+        </div>
+        <a class={styles.workLink} href="/client-work">Have something to build? Work with us →</a>
+      </div>
     </section>
 
     <section class={`container ${styles.activity}`} aria-label="Community activity">
       <div class={styles.activityHeading}><span>△ From the Community</span><a href="/community">View all activity →</a></div>
       <div class={styles.activityGrid}>
         <For each={communityActivity}>{item => <div class={styles.activityItem}>
-          <span class={styles.avatar} data-tone={item.tone}>{item.initials}</span>
+          <span class={styles.avatar} data-tone={item.tone}>{item.icon}</span>
           <p><strong>{item.label}</strong><br /><a href="/community">{item.detail}</a><small>{item.meta}</small></p>
         </div>}</For>
       </div>
@@ -57,15 +57,15 @@ export default function HomePage() {
           <a class={styles.podcastCover} href={`/podcast/${episodes[0].slug}`} aria-label="Open South Mountain Devcast">
             <span class={styles.coverRidges} aria-hidden="true" />
             <strong>SOUTH<br />MOUNTAIN<br />DEVCAST</strong>
-            <span class={styles.mic} aria-hidden="true">♩</span>
+            <span class={styles.mic} aria-hidden="true">◉</span>
           </a>
           <div class={styles.podcastDetails}>
             <span class={styles.comingSoon}>Coming soon</span>
             <h3>South Mountain Devcast</h3>
-            <p>Conversations with local developers, makers, and technologists building on the South Mountain and beyond.</p>
+            <p>Conversations with local developers, makers, and technologists building on South Mountain and beyond.</p>
             <ul>
-              <li>Monthly conversations</li>
-              <li>Local voices & global perspectives</li>
+              <li>Monthly episodes</li>
+              <li>Local guests & global perspectives</li>
               <li>Practical takes, not hot takes</li>
             </ul>
             <a class="button" href="/podcast">Subscribe for Updates</a>
@@ -80,7 +80,7 @@ export default function HomePage() {
             <span class={styles.articleEyebrow}>{item.eyebrow}</span>
             <h3><a href={`/articles/${item.slug}`}>{item.title}</a></h3>
             <p>{item.summary}</p>
-            <footer><span>{item.meta ?? "Read"}</span><a href={`/articles/${item.slug}`} aria-label={`Read ${item.title}`}>▱</a></footer>
+            <footer><span>Draft · {item.meta ?? "Read"}</span><a href={`/articles/${item.slug}`} aria-label={`Read ${item.title}`}>▱</a></footer>
           </article>}</For>
         </div>
       </div>
