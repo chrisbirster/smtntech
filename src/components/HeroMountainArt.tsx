@@ -1,98 +1,107 @@
 import styles from "./HeroMountainArt.module.css";
 
+const routeA = "M118 518 H205 V490 H285 V455 H354 V417 H420 V375 H474 V326 H525 V274 H565 V224 H592 V178 H620 V142 H650 V104 H686 V72";
+const routeB = "M376 544 V500 H422 V462 H468 V420 H510 V380 H548 V335 H580 V289 H606 V242 H625 V196 H620 V142 H648 V104 H686 V72";
+const routeC = "M894 518 H836 V486 H786 V448 H744 V409 H706 V368 H674 V324 H650 V276 H634 V230 H625 V188 H620 V142 H650 V104 H686 V72";
+
 export default function HeroMountainArt() {
   return (
     <div class={styles.wrap} aria-hidden="true">
-      <svg viewBox="0 0 1000 560" role="img">
+      <svg viewBox="0 0 1000 560" role="img" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="hero-mountain-back" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="var(--moss-400)" stop-opacity=".19" />
-            <stop offset=".62" stop-color="var(--moss-500)" stop-opacity=".075" />
+            <stop offset="0" stop-color="var(--moss-400)" stop-opacity=".22" />
+            <stop offset=".58" stop-color="var(--moss-500)" stop-opacity=".085" />
             <stop offset="1" stop-color="var(--ink-950)" stop-opacity="0" />
           </linearGradient>
           <linearGradient id="hero-mountain-front" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="var(--moss-500)" stop-opacity=".18" />
-            <stop offset=".48" stop-color="var(--ink-850)" stop-opacity=".48" />
-            <stop offset="1" stop-color="var(--ink-950)" stop-opacity=".08" />
+            <stop offset="0" stop-color="var(--moss-500)" stop-opacity=".17" />
+            <stop offset=".52" stop-color="var(--ink-850)" stop-opacity=".46" />
+            <stop offset="1" stop-color="var(--ink-950)" stop-opacity=".12" />
           </linearGradient>
-          <linearGradient id="hero-circuit" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="var(--accent)" />
-            <stop offset=".62" stop-color="var(--accent)" />
-            <stop offset="1" stop-color="var(--success)" />
+          <linearGradient id="hero-circuit" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="var(--success)" />
+            <stop offset=".55" stop-color="var(--accent)" />
+            <stop offset="1" stop-color="oklch(88% .09 84)" />
           </linearGradient>
+          <filter id="current-glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="3.2" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
         </defs>
 
-        <path class={styles.backFill} d="M18 500 112 438 180 446 252 382 313 394 383 302 439 324 511 222 558 241 620 144 670 213 718 188 776 270 833 249 986 500Z" />
-        <path class={styles.midFill} d="M38 514 132 451 204 458 280 389 333 403 408 311 462 333 532 233 577 247 624 155 675 222 725 198 783 282 842 262 994 514Z" />
-        <path class={styles.frontFill} d="M58 529 156 468 229 478 304 410 360 424 432 340 486 360 548 274 593 286 631 205 681 260 733 242 789 320 850 304 1000 529Z" />
+        <path class={styles.backFill} d="M12 504 92 457 151 442 210 420 269 385 323 398 383 321 435 340 490 271 540 292 588 211 620 144 653 196 697 175 744 229 790 251 838 289 902 344 990 504Z" />
+        <path class={styles.midFill} d="M29 519 112 469 174 456 234 433 293 401 346 414 405 338 458 357 513 289 563 308 604 232 625 164 661 215 703 194 751 247 798 269 846 307 910 362 998 519Z" />
+        <path class={styles.frontFill} d="M48 535 133 486 196 474 258 451 317 420 371 434 429 360 483 380 537 312 588 331 619 262 632 205 669 251 711 231 759 282 807 305 855 342 920 397 1000 535Z" />
 
         <g class={styles.contours}>
-          <path d="M27 494 114 438 183 447 253 383 314 395 384 303 440 326 512 223 559 243 620 145 671 214 719 190 777 271 834 251 986 494" />
-          <path d="M38 501 124 445 194 454 265 390 326 402 396 313 451 336 523 236 570 255 622 160 674 228 723 204 781 285 840 265 990 501" />
-          <path d="M49 508 136 453 206 462 278 399 339 412 409 326 464 349 535 251 582 270 625 178 677 244 727 221 785 301 846 281 994 508" />
-          <path d="M61 516 148 462 219 471 292 409 353 422 423 338 478 361 547 267 595 286 628 197 680 261 731 238 789 318 852 299 998 516" />
-          <path d="M75 524 162 471 233 480 306 419 367 432 437 350 492 373 559 284 608 303 632 218 684 280 735 257 794 335 858 316 1000 524" />
-          <path d="M90 532 177 480 248 489 321 430 382 443 452 363 506 386 572 302 621 320 636 240 689 300 740 277 800 353 865 334 1000 532" />
-          <path d="M107 540 194 490 265 499 338 442 399 455 469 378 523 401 586 321 635 338 641 263 694 321 745 299 806 372 872 353 1000 540" />
-          <path d="M127 547 214 500 285 509 357 454 418 467 487 393 541 416 601 341 650 358 647 286 700 342 751 321 813 391 879 373 1000 547" />
-          <path d="M150 553 236 511 307 520 379 467 440 480 508 410 562 433 617 362 666 379 654 312 707 365 758 344 820 411 887 394 1000 553" />
-          <path d="M176 558 262 522 333 531 405 481 466 494 534 429 588 452 635 385 684 401 662 339 715 390 766 370 829 433 895 417 1000 558" />
+          <path d="M20 493 98 450 154 436 214 414 272 379 326 392 386 314 438 334 493 263 543 286 590 204 620 144 653 196 697 175 744 229 790 251 838 289 902 344 990 493" />
+          <path d="M30 501 108 458 164 445 224 423 282 389 336 402 396 325 448 345 503 274 553 297 594 217 622 156 656 208 700 187 747 240 793 262 841 300 905 355 992 501" />
+          <path d="M40 509 118 467 174 454 234 432 292 399 346 412 406 336 458 356 513 286 563 309 598 231 624 170 659 221 703 200 750 253 796 275 844 313 908 368 994 509" />
+          <path d="M51 517 129 476 185 463 245 441 303 409 357 422 417 347 469 367 524 298 574 321 602 245 627 185 662 235 706 214 753 266 799 288 847 326 911 381 996 517" />
+          <path d="M63 525 141 485 197 472 257 450 315 419 369 432 429 358 481 378 536 310 586 333 606 260 630 201 665 250 709 229 756 281 802 303 850 341 914 396 998 525" />
+          <path d="M76 533 154 494 210 481 270 459 328 429 382 442 442 369 494 389 549 322 599 345 611 275 633 218 668 266 712 245 759 297 805 319 853 357 917 412 1000 533" />
+          <path d="M90 541 168 503 224 490 284 468 342 439 396 452 456 380 508 400 563 334 613 357 616 291 636 235 671 282 715 261 762 313 808 335 856 373 920 428 1000 541" />
+          <path d="M106 548 184 512 240 499 300 477 358 449 412 462 472 392 524 412 579 346 629 369 621 308 639 252 674 299 718 278 765 330 811 352 859 390 923 445 1000 548" />
+          <path d="M124 554 202 521 258 508 318 486 376 459 430 472 490 404 542 424 597 358 647 381 626 325 642 270 677 316 721 295 768 347 814 369 862 407 926 462 1000 554" />
         </g>
 
         <g class={styles.innerContours}>
-          <path d="M223 471c65-47 108-94 153-145 48-55 88-86 129-91 44-6 76 23 112 64 49 56 93 94 181 137" />
-          <path d="M244 484c62-44 104-89 148-137 47-52 85-81 124-85 42-5 72 22 107 60 47 52 89 88 173 128" />
-          <path d="M266 497c60-41 101-84 143-130 45-49 82-76 119-79 40-4 69 20 102 56 45 49 85 82 165 120" />
-          <path d="M289 509c57-38 97-79 137-122 43-46 78-71 114-73 37-3 65 19 97 53 42 45 81 77 156 111" />
-          <path d="M313 520c54-35 92-73 130-114 41-43 75-65 109-67 35-2 61 17 91 48 40 42 76 70 146 102" />
-          <path d="M338 530c50-32 87-68 122-105 39-40 71-60 103-61 33-2 57 15 85 44 37 38 71 64 136 94" />
-          <path d="M365 539c47-29 81-62 114-96 36-36 67-55 97-56 30-1 53 14 79 40 34 35 66 59 126 86" />
-          <path d="M393 547c43-26 75-56 105-87 33-33 61-49 89-50 28-1 49 12 72 36 32 32 61 54 115 78" />
+          <path d="M154 480c92-50 145-109 205-164 61-55 111-86 167-88 57-2 103 28 153 77 53 52 105 91 207 137" />
+          <path d="M178 493c86-47 137-102 194-153 58-52 105-81 157-83 54-2 98 26 145 72 50 49 100 86 195 129" />
+          <path d="M202 506c81-44 129-96 183-144 55-49 99-76 148-78 51-2 92 24 136 68 47 46 94 81 184 121" />
+          <path d="M226 518c75-41 121-90 172-135 52-46 93-71 139-73 47-2 86 22 127 63 44 43 88 76 173 114" />
+          <path d="M251 529c70-38 113-83 161-126 49-43 87-66 130-68 44-2 80 20 118 59 41 40 82 71 162 107" />
+          <path d="M277 539c65-35 105-77 150-116 46-40 82-61 121-63 41-2 74 18 109 55 38 37 77 66 151 99" />
         </g>
 
-        <g class={styles.circuitPrimary}>
-          <path d="M620 144v51h28v49h31v53h42v57h58v48h82" />
-          <path d="M620 144h-31v48h-28v57h-34v55h-56" />
-          <path d="M620 144v-43h34V70h38" />
-          <path d="M620 144h36v34h39v47h45v50h59" />
-          <path d="M620 144l-39 55v76h-42v50" />
-          <path d="M620 144l24 37v38h28v48" />
-          <path d="M594 183h-42v42h-35v49h-51" />
-          <path d="M655 207h42v44h43v46h65" />
-          <circle cx="620" cy="144" r="5" />
-          <circle cx="692" cy="70" r="4" />
-          <circle cx="861" cy="402" r="4" />
-          <circle cx="471" cy="304" r="4" />
-          <circle cx="799" cy="275" r="4" />
-          <circle cx="466" cy="274" r="3.5" />
-          <circle cx="805" cy="297" r="3.5" />
+        <g class={styles.networkBase}>
+          <path d={routeA} />
+          <path d={routeB} />
+          <path d={routeC} />
+          <path d="M205 490H154v-36H114" />
+          <path d="M285 455h-62v-34h-46" />
+          <path d="M354 417h-52v-31h-54" />
+          <path d="M474 326h-43v-37h-48" />
+          <path d="M565 224h-44v-39h-43" />
+          <path d="M422 462h-46v-40h-39" />
+          <path d="M510 380h-48v-35h-38" />
+          <path d="M580 289h-42v-36h-39" />
+          <path d="M744 409h52v-38h48" />
+          <path d="M706 368h55v-36h50" />
+          <path d="M674 324h48v-36h45" />
+          <path d="M650 276h45v-38h43" />
+          <path d="M634 230h48v-34h39" />
         </g>
 
-        <g class={styles.circuitSecondary}>
-          <path d="M646 164v75h28v55h37v58h58v44h64" />
-          <path d="M600 164v61h-31v55h-35v62h-55" />
-          <path d="M665 186h38v42h40v48h61" />
-          <path d="M573 207h-36v42h-32v43h-45" />
-          <path d="M683 239h37v38h37v39h59" />
-          <circle cx="833" cy="396" r="3.5" />
-          <circle cx="479" cy="342" r="3.5" />
-          <circle cx="460" cy="292" r="3" />
-          <circle cx="816" cy="316" r="3" />
+        <g class={styles.networkNodes}>
+          <circle cx="118" cy="518" r="3" /><circle cx="205" cy="490" r="3" /><circle cx="285" cy="455" r="3" /><circle cx="354" cy="417" r="3" /><circle cx="420" cy="375" r="3" /><circle cx="474" cy="326" r="3" /><circle cx="525" cy="274" r="3" /><circle cx="565" cy="224" r="3" /><circle cx="592" cy="178" r="3" />
+          <circle cx="376" cy="544" r="3" /><circle cx="422" cy="462" r="3" /><circle cx="510" cy="380" r="3" /><circle cx="580" cy="289" r="3" /><circle cx="606" cy="242" r="3" />
+          <circle cx="894" cy="518" r="3" /><circle cx="836" cy="486" r="3" /><circle cx="786" cy="448" r="3" /><circle cx="744" cy="409" r="3" /><circle cx="706" cy="368" r="3" /><circle cx="674" cy="324" r="3" /><circle cx="650" cy="276" r="3" /><circle cx="634" cy="230" r="3" />
+          <circle cx="620" cy="142" r="5" /><circle cx="650" cy="104" r="4" /><circle cx="686" cy="72" r="5" />
         </g>
+
+        <g class={styles.currentRoutes} filter="url(#current-glow)">
+          <path class={`${styles.current} ${styles.routeA}`} pathLength="1" d={routeA} />
+          <path class={`${styles.current} ${styles.routeB}`} pathLength="1" d={routeB} />
+          <path class={`${styles.current} ${styles.routeC}`} pathLength="1" d={routeC} />
+        </g>
+
+        <circle class={styles.summitPulse} cx="686" cy="72" r="5" />
 
         <g class={styles.codePanel}>
-          <text x="372" y="323">01</text><text x="411" y="323">git checkout -b new-idea</text>
-          <text x="372" y="347">02</text><text x="411" y="347">build locally()</text>
-          <text x="372" y="371">03</text><text x="411" y="371">share openly()</text>
-          <text x="372" y="395">04</text><text x="411" y="395">git commit -m "ship it"</text>
-          <path d="M406 415h116m-116 12h84m-84 12h128m-128 12h98" />
+          <text x="310" y="340">01</text><text x="348" y="340">git checkout -b new-idea</text>
+          <text x="310" y="365">02</text><text x="348" y="365">build locally()</text>
+          <text x="310" y="390">03</text><text x="348" y="390">share openly()</text>
+          <text x="310" y="415">04</text><text x="348" y="415">git commit -m "ship it"</text>
+          <path d="M344 435h118m-118 13h86m-86 13h132m-132 13h99" />
         </g>
 
         <g class={styles.commandBoxes}>
-          <rect x="566" y="338" width="168" height="34" rx="8" />
-          <text x="582" y="360">git commit -m "ship it"</text>
-          <rect x="748" y="423" width="160" height="34" rx="8" />
-          <text x="764" y="445">git push origin main</text>
+          <rect x="520" y="360" width="174" height="36" rx="8" />
+          <text x="537" y="383">git commit -m "ship it"</text>
+          <rect x="718" y="438" width="165" height="36" rx="8" />
+          <text x="735" y="461">git push origin main</text>
         </g>
       </svg>
     </div>
