@@ -7,10 +7,12 @@ Community website and infrastructure for `southmountaintech.com`.
 - SolidJS `2.0.0-rc.0`
 - `@solidjs/web` `2.0.0-rc.0`
 - Solid Router `2.0.0-next.16`
-- Vite + `vite-plugin-solid` 3 next line
+- Vite + `@solidjs/vite-plugin` `3.0.0-next.27`
 - TypeScript + custom CSS Modules
 - SST v3 + Cloudflare + AWS SES
 - Node.js 22+ with npm
+
+This project follows the Solid 2 RC package boundary: DOM rendering and JSX come from `@solidjs/web`, routing uses the Solid Router 2 static `createRouter()` API, and lifecycle/effect code follows the Solid 2 compute/apply and `onSettled()` model.
 
 ## Local development
 
