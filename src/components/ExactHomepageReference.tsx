@@ -1,4 +1,4 @@
-import reference from "../assets/homepage-reference.avif";
+import reference from "../assets/homepageReference";
 import styles from "./ExactHomepageReference.module.css";
 
 // These paths are traced over circuit lines that already exist in the mockup image.
@@ -35,7 +35,7 @@ export default function ExactHomepageReference() {
       <div class={styles.canvas}>
         <img class={styles.image} src={reference} alt="" aria-hidden="true" />
 
-        <svg class={styles.current} viewBox="0 0 1418 1724" preserveAspectRatio="none" aria-hidden="true">
+        <svg class={styles.current} viewBox="0 0 1418 1778" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="exact-current" x1="0" y1="1" x2="0" y2="0">
               <stop offset="0" stop-color="#93b94a" />
