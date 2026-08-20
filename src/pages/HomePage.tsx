@@ -1,9 +1,10 @@
 import { For } from "solid-js";
-import MountainArt from "../components/MountainArt";
+import HeroMountainArt from "../components/HeroMountainArt";
 import SectionHeading from "../components/SectionHeading";
 import ContentCard from "../components/ContentCard";
 import { articles, clients, episodes, projects, showcase } from "../data/content";
 import styles from "./HomePage.module.css";
+import mockStyles from "./HomePageMockup.module.css";
 
 const communityActivity = [
   { icon: "◉", label: "Community", detail: "Founding members wanted", meta: "help shape what comes next", tone: "green" },
@@ -16,11 +17,11 @@ const communityActivity = [
 export default function HomePage() {
   document.title = "South Mountain Technologies — Build locally. Share openly.";
 
-  return <>
-    <section class={`container ${styles.hero}`}>
-      <div class={styles.heroVisual}>
-        <MountainArt />
-        <aside class={styles.statusPanel} aria-label="Community status">
+  return <div class={mockStyles.home}>
+    <section class={`container ${styles.hero} ${mockStyles.hero} ${mockStyles.fullContainer}`}>
+      <div class={`${styles.heroVisual} ${mockStyles.heroVisual}`}>
+        <HeroMountainArt />
+        <aside class={`${styles.statusPanel} ${mockStyles.statusPanel}`} aria-label="Community status">
           <div><span class={styles.statusIcon}>◎</span><span>Community status</span><strong>Forming now</strong><i /></div>
           <div><span class={styles.statusIcon}>◉</span><span>Monthly podcast</span><strong>Coming soon</strong><i data-warm /></div>
           <div><span class={styles.statusIcon}>□</span><span>Local meetup</span><strong>Planning phase</strong><i /></div>
@@ -28,10 +29,14 @@ export default function HomePage() {
         </aside>
       </div>
 
-      <div class={styles.heroCopy}>
+      <div class={`${styles.heroCopy} ${mockStyles.heroCopy}`}>
         <span class="eyebrow">South Mountain, Pennsylvania</span>
-        <h1>Build locally.<br />Share openly.<br /><em>Geek out together.</em></h1>
-        <p class="lede">South Mountain Technologies is a developer community for South Mountain, Pennsylvania. We build software, share knowledge, and lift each other up—online and in person. All experience levels, all kinds of projects, one mountain.</p>
+        <h1 class={mockStyles.headline}>
+          <span>Build locally<span class={mockStyles.punctuation}>.</span></span>
+          <span>Share openly<span class={mockStyles.punctuation}>.</span></span>
+          <span>Geek out together<span class={mockStyles.punctuation}>.</span></span>
+        </h1>
+        <p class={`lede ${mockStyles.lede}`}>South Mountain Technologies is a developer community for South Mountain, Pennsylvania. We build software, share knowledge, and lift each other up—online and in person. All experience levels, all kinds of projects, one mountain.</p>
         <div class={styles.heroActions}>
           <a class="button" data-variant="primary" href="/join"><span aria-hidden="true">◎</span> Join the Community</a>
           <a class="button" href="/events"><span aria-hidden="true">▣</span> See Upcoming Events</a>
@@ -40,20 +45,20 @@ export default function HomePage() {
       </div>
     </section>
 
-    <section class={`container ${styles.activity}`} aria-label="Community activity">
+    <section class={`container ${styles.activity} ${mockStyles.activity} ${mockStyles.fullContainer}`} aria-label="Community activity">
       <div class={styles.activityHeading}><span>△ From the Community</span><a href="/community">View all activity →</a></div>
-      <div class={styles.activityGrid}>
-        <For each={communityActivity}>{item => <div class={styles.activityItem}>
+      <div class={`${styles.activityGrid} ${mockStyles.activityGrid}`}>
+        <For each={communityActivity}>{item => <div class={`${styles.activityItem} ${mockStyles.activityItem}`}>
           <span class={styles.avatar} data-tone={item.tone}>{item.icon}</span>
           <p><strong>{item.label}</strong><br /><a href="/community">{item.detail}</a><small>{item.meta}</small></p>
         </div>}</For>
       </div>
     </section>
 
-    <section class={`container ${styles.splitSection}`}>
+    <section class={`container ${styles.splitSection} ${mockStyles.splitSection} ${mockStyles.fullContainer}`}>
       <div class={styles.podcastColumn}>
         <SectionHeading eyebrow="Featured podcast" title="From the Mountain" action={{label:"Podcast",href:"/podcast"}} />
-        <article class={styles.podcastFeature}>
+        <article class={`${styles.podcastFeature} ${mockStyles.podcastFeature}`}>
           <a class={styles.podcastCover} href={`/podcast/${episodes[0].slug}`} aria-label="Open South Mountain Devcast">
             <span class={styles.coverRidges} aria-hidden="true" />
             <strong>SOUTH<br />MOUNTAIN<br />DEVCAST</strong>
@@ -76,7 +81,7 @@ export default function HomePage() {
       <div class={styles.articlesColumn}>
         <SectionHeading eyebrow="Latest articles" title="What We’re Talking About" action={{label:"View all articles",href:"/articles"}} />
         <div class={styles.articleGrid}>
-          <For each={articles.slice(0,4)}>{item => <article class={styles.articleCard}>
+          <For each={articles.slice(0,4)}>{item => <article class={`${styles.articleCard} ${mockStyles.articleCard}`}>
             <span class={styles.articleEyebrow}>{item.eyebrow}</span>
             <h3><a href={`/articles/${item.slug}`}>{item.title}</a></h3>
             <p>{item.summary}</p>
@@ -110,5 +115,5 @@ export default function HomePage() {
     <section class={`container ${styles.clientSection}`}><div><span class="eyebrow">Community first. Client work too.</span><h2>We build useful things.</h2><p>South Mountain Technologies helps local organizations solve real problems with clean, maintainable software and thoughtful design.</p><a class="button" href="/client-work">Start a Conversation →</a></div><div class={styles.clientCards}><For each={clients}>{item => <ContentCard item={item} />}</For></div></section>
 
     <section class={`container ${styles.cta}`}><div><span class="eyebrow">Join us at the trailhead</span><h2>Get updates. Stay connected.</h2><p>Get meetup news, local tech events, articles, and the occasional trailhead update.</p></div><div class={styles.ctaActions}><a class="button" data-variant="primary" href="/join">Join the Community</a><a class="button" href="mailto:chris@southmountaintech.com">Email Chris</a></div></section>
-  </>;
+  </div>;
 }
