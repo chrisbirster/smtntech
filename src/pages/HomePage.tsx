@@ -2,21 +2,113 @@ import { For } from "solid-js";
 import MountainArt from "../components/MountainArt";
 import SectionHeading from "../components/SectionHeading";
 import ContentCard from "../components/ContentCard";
-import { activities, articles, clients, episodes, projects, showcase } from "../data/content";
+import { articles, clients, episodes, projects, showcase } from "../data/content";
 import styles from "./HomePage.module.css";
+
+const communityActivity = [
+  { initials: "CB", label: "Chris proposed", detail: "CoolShell", meta: "open community project", tone: "green" },
+  { initials: "SM", label: "Topic suggestions", detail: "are open", meta: "help shape the Devcast", tone: "orange" },
+  { initials: "GH", label: "Meeting notes", detail: "live on GitHub", meta: "open by default", tone: "green" },
+  { initials: "PA", label: "Local meetup", detail: "planning started", meta: "venue + format wanted", tone: "orange" },
+  { initials: "YOU", label: "Your project", detail: "belongs here", meta: "show us what you build", tone: "green" },
+] as const;
 
 export default function HomePage() {
   document.title = "South Mountain Technologies — Build locally. Share openly.";
+
   return <>
-    <section class={`container ${styles.hero}`}><div class={styles.heroCopy}><span class="eyebrow">South Mountain, Pennsylvania</span><h1>Build locally.<br />Share openly.<br /><em>Geek out together.</em></h1><p class="lede">South Mountain Technologies is a developer community for people who want to build software, share knowledge, explore new tools, and find other builders close to home.</p><div class={styles.heroActions}><a class="button" data-variant="primary" href="/join">Join the Community</a><a class="button" href="/projects">Explore Projects</a></div><a class={styles.workLink} href="/client-work">Have something to build? Work with us →</a></div><div class={styles.heroVisual}><MountainArt /><aside class={styles.statusPanel} aria-label="Community status"><div><span>Community</span><strong>Forming now</strong><i /></div><div><span>Monthly podcast</span><strong>In development</strong><i data-warm /></div><div><span>Local meetup</span><strong>Planning phase</strong><i /></div><div><span>GitHub projects</span><strong>Open to contributors</strong><i /></div></aside></div></section>
-    <section class={`container ${styles.activity}`} aria-label="Community activity"><div class={styles.activityHeading}><span>△ From the community</span><a href="/community">View community →</a></div><div class={styles.activityGrid}><For each={activities}>{(item,index) => <div><span>{String(index()+1).padStart(2,"0")}</span><p>{item}</p></div>}</For></div></section>
-    <section class={`container ${styles.splitSection}`}><div><SectionHeading eyebrow="Featured podcast" title="From the Mountain" action={{label:"Podcast",href:"/podcast"}} /><ContentCard item={episodes[0]} featured /></div><div><SectionHeading eyebrow="Latest articles" title="What We’re Talking About" action={{label:"All articles",href:"/articles"}} /><div class={styles.articleGrid}><For each={articles.slice(0,4)}>{item => <ContentCard item={item} />}</For></div></div></section>
-    <section class={`container ${styles.section}`}><SectionHeading eyebrow="Built on the Mountain" title="Community Projects" copy="Open experiments, useful tools, questionable ideas, and projects we build because they sound fun." action={{label:"All projects",href:"/projects"}} /><div class={styles.projectsGrid}><ContentCard item={projects[0]} featured /><div class={styles.stack}><For each={projects.slice(1)}>{item => <ContentCard item={item} />}</For></div></div></section>
-    <section class={`container ${styles.section}`}><SectionHeading eyebrow="What are you building?" title="Developer Showcase" copy="Weekend experiments, production apps, learning projects, hardware, games, libraries — if you built it, bring it." action={{label:"Submit yours",href:"/showcase"}} /><div class={styles.showcaseGrid}><For each={showcase}>{item => <article class={styles.showcaseCard}><div class={styles.preview}><span>&gt;_</span><strong>{item.title}</strong></div><div class={styles.showcaseMeta}><span>{item.maker}</span><em>{item.state}</em></div><h3>{item.title}</h3><p>{item.summary}</p><div><For each={item.tags}>{tag => <span class="tag">{tag}</span>}</For></div></article>}</For></div></section>
-    <section class={`container ${styles.section}`}><SectionHeading eyebrow="The Break Room" title="Memes, Weird Links & Dev Polls" copy="Because building software is serious business. Mostly." /><div class={styles.breakGrid}><article class={styles.meme}><small>Meme of the week</small><div><strong>works on<br />my machine</strong><span>¯\\_(ツ)_/¯</span></div><p>— every developer, eventually</p></article><article class={styles.weird}><small>Strange but true</small><h3>Repos we would absolutely click</h3><ul><li>is-it-a-bug-or-a-feature</li><li>dependency-roulette</li><li>css-i-hardly-know-her</li></ul><a href="/community">Bring your weird link →</a></article><article class={styles.poll}><small>Developer poll</small><h3>Which problem are you currently pretending does not exist?</h3><div><span>Dependency updates</span><i style={{width:"72%"}} /></div><div><span>Test coverage</span><i style={{width:"54%"}} /></div><div><span>The deploy pipeline</span><i style={{width:"41%"}} /></div><a href="/community">Vote when community voting opens →</a></article></div></section>
-    <section class={styles.eventsBand}><div class={`container ${styles.eventsGrid}`}><div><span class="eyebrow">Meet at the Trailhead</span><h2>Events, meetups, and chances to connect.</h2><p>We’re working toward a monthly South Mountain developer meetup. Help choose the venue, format, topics, and first date.</p><a class="button" href="/events">Help plan the first meetup</a></div><a class={styles.eventCard} href="/events/south-mountain-developer-meetup"><small>In planning</small><h3>South Mountain Developer Meetup</h3><p>Two short talks. Project show-and-tell. Open discussion. Food. Actual conversations.</p><span>Details coming soon →</span></a></div></section>
-    <section class={`container ${styles.section}`}><SectionHeading eyebrow="Everyone starts somewhere" title="Our Community Values" /><div class={styles.values}><div><b>01</b><h3>Curiosity over credentials</h3><p>You do not need a CS degree or a senior title to participate.</p></div><div><b>02</b><h3>Build in public</h3><p>Share unfinished work, decisions, wins, and wrong turns.</p></div><div><b>03</b><h3>Teach what you know</h3><p>A five-minute explanation can unlock something for someone else.</p></div><div><b>04</b><h3>Leave the trail better</h3><p>Document what you learn and make space for the next contributor.</p></div></div></section>
-    <section class={`container ${styles.clientSection}`}><div><span class="eyebrow">Community first. Client work too.</span><h2>We build useful things.</h2><p>Selected commercial work gives us a place to exercise the same practical engineering skills we explore in the community.</p><a class="button" href="/client-work">Start a conversation</a></div><div class={styles.clientCards}><For each={clients}>{item => <ContentCard item={item} />}</For></div></section>
-    <section class={`container ${styles.cta}`}><div><span class="eyebrow">Join us at the trailhead</span><h2>Bring the project you can’t stop talking about.</h2><p>Get meetup updates, podcast news, project calls, and the best links shared by the community.</p></div><div class={styles.ctaActions}><a class="button" data-variant="primary" href="/join">Join the Community</a><a class="button" href="mailto:chris@southmountaintech.com">Email Chris</a></div></section>
+    <section class={`container ${styles.hero}`}>
+      <div class={styles.heroCopy}>
+        <span class="eyebrow">South Mountain, Pennsylvania</span>
+        <h1>Build locally.<br />Share openly.<br /><em>Geek out together.</em></h1>
+        <p class="lede">South Mountain Technologies is a developer community for South Mountain, Pennsylvania. We build software, share knowledge, and lift each other up — online and in person.</p>
+        <div class={styles.heroActions}>
+          <a class="button" data-variant="primary" href="/join"><span aria-hidden="true">⌘</span> Join the Community</a>
+          <a class="button" href="/events"><span aria-hidden="true">▣</span> See Upcoming Events</a>
+        </div>
+        <a class={styles.workLink} href="/client-work">Have something to build? Work with us →</a>
+      </div>
+
+      <div class={styles.heroVisual}>
+        <MountainArt />
+        <aside class={styles.statusPanel} aria-label="Community status">
+          <div><span class={styles.statusIcon}>◎</span><span>Community status</span><strong>Forming now</strong><i /></div>
+          <div><span class={styles.statusIcon}>◉</span><span>Monthly podcast</span><strong>Coming soon</strong><i data-warm /></div>
+          <div><span class={styles.statusIcon}>□</span><span>Local meetup</span><strong>Planning phase</strong><i /></div>
+          <div><span class={styles.statusIcon}>&lt;/&gt;</span><span>GitHub projects</span><strong>Open to contributors</strong><i /></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class={`container ${styles.activity}`} aria-label="Community activity">
+      <div class={styles.activityHeading}><span>△ From the Community</span><a href="/community">View all activity →</a></div>
+      <div class={styles.activityGrid}>
+        <For each={communityActivity}>{item => <div class={styles.activityItem}>
+          <span class={styles.avatar} data-tone={item.tone}>{item.initials}</span>
+          <p><strong>{item.label}</strong><br /><a href="/community">{item.detail}</a><small>{item.meta}</small></p>
+        </div>}</For>
+      </div>
+    </section>
+
+    <section class={`container ${styles.splitSection}`}>
+      <div class={styles.podcastColumn}>
+        <SectionHeading eyebrow="Featured podcast" title="From the Mountain" action={{label:"Podcast",href:"/podcast"}} />
+        <article class={styles.podcastFeature}>
+          <a class={styles.podcastCover} href={`/podcast/${episodes[0].slug}`} aria-label="Open South Mountain Devcast">
+            <span class={styles.coverRidges} aria-hidden="true" />
+            <strong>SOUTH<br />MOUNTAIN<br />DEVCAST</strong>
+            <span class={styles.mic} aria-hidden="true">♩</span>
+          </a>
+          <div class={styles.podcastDetails}>
+            <span class={styles.comingSoon}>Coming soon</span>
+            <h3>South Mountain Devcast</h3>
+            <p>Conversations with local developers, makers, and technologists building on the South Mountain and beyond.</p>
+            <ul>
+              <li>Monthly conversations</li>
+              <li>Local voices & global perspectives</li>
+              <li>Practical takes, not hot takes</li>
+            </ul>
+            <a class="button" href="/podcast">Subscribe for Updates</a>
+          </div>
+        </article>
+      </div>
+
+      <div class={styles.articlesColumn}>
+        <SectionHeading eyebrow="Latest articles" title="What We’re Talking About" action={{label:"View all articles",href:"/articles"}} />
+        <div class={styles.articleGrid}>
+          <For each={articles.slice(0,4)}>{item => <article class={styles.articleCard}>
+            <span class={styles.articleEyebrow}>{item.eyebrow}</span>
+            <h3><a href={`/articles/${item.slug}`}>{item.title}</a></h3>
+            <p>{item.summary}</p>
+            <footer><span>{item.meta ?? "Read"}</span><a href={`/articles/${item.slug}`} aria-label={`Read ${item.title}`}>▱</a></footer>
+          </article>}</For>
+        </div>
+      </div>
+    </section>
+
+    <div class={styles.topoDivider} aria-hidden="true" />
+
+    <section class={`container ${styles.section}`}>
+      <SectionHeading eyebrow="Built on the Mountain" title="Community Projects" copy="Open experiments, useful tools, questionable ideas, and projects we build because they sound fun." action={{label:"All projects",href:"/projects"}} />
+      <div class={styles.projectsGrid}><ContentCard item={projects[0]} featured /><div class={styles.stack}><For each={projects.slice(1)}>{item => <ContentCard item={item} />}</For></div></div>
+    </section>
+
+    <section class={`container ${styles.section}`}>
+      <SectionHeading eyebrow="What are you building?" title="Developer Showcase" copy="Weekend experiments, production apps, learning projects, hardware, games, libraries — if you built it, bring it." action={{label:"Submit yours",href:"/showcase"}} />
+      <div class={styles.showcaseGrid}><For each={showcase}>{item => <article class={styles.showcaseCard}><div class={styles.preview}><span>&gt;_</span><strong>{item.title}</strong></div><div class={styles.showcaseMeta}><span>{item.maker}</span><em>{item.state}</em></div><h3>{item.title}</h3><p>{item.summary}</p><div><For each={item.tags}>{tag => <span class="tag">{tag}</span>}</For></div></article>}</For></div>
+    </section>
+
+    <section class={`container ${styles.section}`}>
+      <SectionHeading eyebrow="The Break Room" title="Meme Wall, Weird Links & Dev Polls" copy="Because building software is serious business. Mostly." />
+      <div class={styles.breakGrid}><article class={styles.meme}><small>Meme of the day</small><div><strong>I don’t always<br />write tests</strong><span>but when I do,<br />it’s right before I ship.</span></div><p>— every developer, eventually</p></article><article class={styles.weird}><small>Strange but true repos</small><h3>Repos we would absolutely click</h3><ul><li>is-it-a-bug-or-a-feature</li><li>never-gonna-give-you-up</li><li>cats-on-a-keyboard</li></ul><a href="/community">Explore more weird repos →</a></article><article class={styles.poll}><small>Developer poll</small><h3>What’s your go-to coding soundtrack?</h3><div><span>Lo-fi beats · 42%</span><i style={{width:"72%"}} /></div><div><span>Synthwave · 28%</span><i style={{width:"54%"}} /></div><div><span>Movie scores · 16%</span><i style={{width:"41%"}} /></div><div><span>Silence · 14%</span><i style={{width:"34%"}} /></div><a href="/community">Vote when community voting opens →</a></article><article class={styles.til}><small>Today I learned</small><p>⌾ TIL you can search your command history without leaving the shell.</p><p>⌘ TIL Git has configuration most people never discover.</p><p>△ TIL modern CSS can center things without a ritual sacrifice.</p><a href="/community">Share your TIL →</a></article></div>
+    </section>
+
+    <section class={styles.eventsBand}><div class={`container ${styles.eventsGrid}`}><div><span class="eyebrow">Meet at the Trailhead</span><h2>Events, meetups, and chances to connect.</h2><p>We’re working toward a monthly South Mountain developer meetup. Help choose the venue, format, topics, and first date.</p><a class="button" href="/events">See all Events →</a></div><a class={styles.eventCard} href="/events/south-mountain-developer-meetup"><small>In planning</small><h3>South Mountain Developer Meetup</h3><p>Two short talks. Project show-and-tell. Open discussion. Food. Actual conversations.</p><span>Get notified when it’s live →</span></a><div class={styles.futureEvent}><span aria-hidden="true">▣</span><h3>A new trailhead is coming.</h3><p>We’re always planning the next opportunity to learn and connect.</p><a href="/join">Suggest a topic or format</a></div></div></section>
+
+    <section class={`container ${styles.section}`}><SectionHeading eyebrow="Everyone starts somewhere" title="Our Community Values" /><div class={styles.values}><div><b>◎</b><h3>Open & welcoming</h3><p>Everyone belongs here. No gatekeeping. No prerequisites.</p></div><div><b>&lt;/&gt;</b><h3>Build in public</h3><p>We learn out loud, ship small, and share the journey.</p></div><div><b>△</b><h3>Local first</h3><p>Rooted in South Mountain, PA. We show up for our neighbors.</p></div><div><b>♡</b><h3>Give first</h3><p>Share knowledge. Lend a hand. Make space for others to grow.</p></div></div></section>
+
+    <section class={`container ${styles.clientSection}`}><div><span class="eyebrow">Community first. Client work too.</span><h2>We build useful things.</h2><p>South Mountain Technologies helps local organizations solve real problems with clean, maintainable software and thoughtful design.</p><a class="button" href="/client-work">Start a Conversation →</a></div><div class={styles.clientCards}><For each={clients}>{item => <ContentCard item={item} />}</For></div></section>
+
+    <section class={`container ${styles.cta}`}><div><span class="eyebrow">Join us at the trailhead</span><h2>Get updates. Stay connected.</h2><p>Get meetup news, local tech events, articles, and the occasional trailhead update.</p></div><div class={styles.ctaActions}><a class="button" data-variant="primary" href="/join">Join the Community</a><a class="button" href="mailto:chris@southmountaintech.com">Email Chris</a></div></section>
   </>;
 }
