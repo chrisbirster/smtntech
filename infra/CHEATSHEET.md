@@ -3,9 +3,9 @@
 ```bash
 cd infra
 cp .env.example .env
-bun install
-bun run check
-bun run deploy:production
+npm install
+npm run check
+npm run deploy:production
 ```
 
 First deploy with `SMT_EMAIL_ROUTING_READY=false`, verify the Cloudflare destination email in Gmail, then set it to `true` and deploy again.
