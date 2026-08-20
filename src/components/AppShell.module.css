@@ -39,6 +39,10 @@
   .mobileNav { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .35rem; width: var(--page); margin-inline: auto; padding-bottom: 1rem; }
   .mobileNav a { padding: .75rem; border: 1px solid var(--line); border-radius: .6rem; text-decoration: none; }
 }
+@media (max-width: 900px) {
+  .actions > :first-child,
+  .iconButton { display: none; }
+}
 @media (max-width: 700px) {
   .announcement { font-size: .68rem; }
   .announcement a { display: none; }
