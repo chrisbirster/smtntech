@@ -1,6 +1,6 @@
 .wrap {
   position: absolute;
-  inset: -.55rem -1.4rem -1.45rem -4%;
+  inset: -.55rem -1.8rem -1.45rem -14%;
   pointer-events: none;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .wrap svg {
-  width: 112%;
+  width: 118%;
   height: 100%;
   overflow: visible;
   transform: translateX(-2%);
@@ -97,7 +97,7 @@
 }
 
 @media (max-width: 1120px) {
-  .wrap { inset: .5rem -2.8rem -1rem -1%; opacity: .9; }
+  .wrap { inset: .5rem -2.8rem -1rem -6%; opacity: .9; }
   .codePanel { opacity: .62; }
 }
 
