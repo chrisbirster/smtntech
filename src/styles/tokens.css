@@ -44,7 +44,7 @@
     --radius-md: 0.95rem;
     --radius-lg: 1.35rem;
     --shadow-deep: 0 30px 80px oklch(5% 0.02 var(--forest-h) / 0.38);
-    --page: min(1180px, calc(100vw - 2rem));
+    --page: min(1440px, calc(100vw - 3rem));
   }
   [data-theme="light"] {
     --bg: oklch(96% 0.018 var(--sand-h));
