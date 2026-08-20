@@ -23,30 +23,30 @@
   filter: drop-shadow(0 28px 44px rgba(0,0,0,.13));
 }
 
-.backFill { fill: url(#hero-mountain-back); opacity: .9; }
-.midFill { fill: color-mix(in oklab, var(--ink-850) 72%, var(--moss-500) 8%); opacity: .66; }
-.frontFill { fill: url(#hero-mountain-front); opacity: .92; }
+.backFill { fill: url(#hero-mountain-back); opacity: .93; }
+.midFill { fill: color-mix(in oklab, var(--ink-850) 70%, var(--moss-500) 9%); opacity: .7; }
+.frontFill { fill: url(#hero-mountain-front); opacity: .94; }
 
 .contours path,
 .innerContours path {
   fill: none;
-  stroke: color-mix(in oklab, var(--success) 31%, transparent);
-  stroke-width: .9;
+  stroke: color-mix(in oklab, var(--success) 34%, transparent);
+  stroke-width: .88;
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
 
 .contours path:nth-child(2n) {
-  stroke: color-mix(in oklab,var(--accent) 17%,transparent);
+  stroke: color-mix(in oklab,var(--accent) 18%,transparent);
 }
 
-.innerContours { opacity: .78; }
+.innerContours { opacity: .82; }
 .innerContours path {
-  stroke-width: .72;
-  stroke: color-mix(in oklab,var(--success) 23%,transparent);
+  stroke-width: .7;
+  stroke: color-mix(in oklab,var(--success) 25%,transparent);
 }
-.innerContours path:nth-child(3n) { stroke: color-mix(in oklab,var(--accent) 13%,transparent); }
+.innerContours path:nth-child(3n) { stroke: color-mix(in oklab,var(--accent) 14%,transparent); }
 
 .circuitPrimary,
 .circuitSecondary {
@@ -58,14 +58,14 @@
 
 .circuitPrimary {
   stroke: url(#hero-circuit);
-  stroke-width: 1.65;
-  opacity: .92;
+  stroke-width: 1.3;
+  opacity: .82;
 }
 
 .circuitSecondary {
-  stroke: color-mix(in oklab,var(--success) 50%,transparent);
-  stroke-width: .95;
-  opacity: .68;
+  stroke: color-mix(in oklab,var(--success) 46%,transparent);
+  stroke-width: .78;
+  opacity: .56;
 }
 
 .circuitPrimary circle,
@@ -76,24 +76,24 @@
 
 .codePanel text,
 .commandBoxes text {
-  fill: color-mix(in oklab,var(--sand-200) 46%,transparent);
-  font: 10px var(--font-mono);
+  fill: color-mix(in oklab,var(--sand-200) 44%,transparent);
+  font: 9.7px var(--font-mono);
 }
 
 .codePanel text:nth-of-type(odd) {
-  fill: color-mix(in oklab,var(--success) 52%,transparent);
+  fill: color-mix(in oklab,var(--success) 50%,transparent);
 }
 
 .codePanel path {
   fill: none;
-  stroke: color-mix(in oklab,var(--success) 34%,transparent);
-  stroke-width: 1.2;
+  stroke: color-mix(in oklab,var(--success) 32%,transparent);
+  stroke-width: 1.05;
   stroke-linecap: round;
 }
 
 .commandBoxes rect {
-  fill: color-mix(in oklab,var(--ink-900) 94%,transparent);
-  stroke: color-mix(in oklab,var(--accent) 28%,transparent);
+  fill: color-mix(in oklab,var(--ink-900) 95%,transparent);
+  stroke: color-mix(in oklab,var(--accent) 24%,transparent);
 }
 
 @media (max-width: 1120px) {
