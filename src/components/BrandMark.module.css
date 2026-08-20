@@ -1,12 +1,12 @@
-.brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 0.7rem; color: var(--fg); text-decoration: none; white-space: nowrap; }
-.mark { flex: 0 0 auto; width: 2.45rem; color: var(--accent); }
+.brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: .78rem; color: var(--fg); text-decoration: none; white-space: nowrap; }
+.mark { flex: 0 0 auto; width: 2.9rem; color: var(--accent); }
 .mark path, .mark circle { fill: none; stroke: currentColor; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
 .brand span { display: grid; min-width: max-content; line-height: 1; }
-.brand strong { font-size: 0.86rem; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
-.brand small { margin-top: 0.34rem; color: var(--muted); font: 650 0.65rem/1 var(--font-mono); letter-spacing: 0.24em; text-transform: uppercase; white-space: nowrap; }
+.brand strong { font-size: .92rem; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+.brand small { margin-top: .36rem; color: var(--muted); font: 650 .68rem/1 var(--font-mono); letter-spacing: .24em; text-transform: uppercase; white-space: nowrap; }
 @media (max-width: 1220px) {
-  .brand { gap: .5rem; }
-  .mark { width: 2.1rem; }
-  .brand strong { font-size: .74rem; letter-spacing: .1em; }
-  .brand small { margin-top: .28rem; font-size: .54rem; letter-spacing: .2em; }
+  .brand { gap: .62rem; }
+  .mark { width: 2.55rem; }
+  .brand strong { font-size: .82rem; letter-spacing: .105em; }
+  .brand small { margin-top: .3rem; font-size: .6rem; letter-spacing: .21em; }
 }
