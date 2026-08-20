@@ -2,7 +2,7 @@ import styles from "./DevcastCover.module.css";
 
 export default function DevcastCover() {
   return (
-    <svg class={styles.cover} viewBox="0 0 300 430" preserveAspectRatio="xMidYMid slice" role="img" aria-label="South Mountain Devcast cover art">
+    <svg class={styles.cover} viewBox="0 0 300 430" preserveAspectRatio="none" role="img" aria-label="South Mountain Devcast cover art">
       <defs>
         <linearGradient id="devcast-sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#c8aa72" />
