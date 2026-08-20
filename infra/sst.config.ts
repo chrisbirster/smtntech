@@ -9,7 +9,7 @@ export default $config({
       removal: input?.stage === "production" ? "retain" : "remove",
       providers: {
         aws: { region: (process.env.AWS_REGION ?? "us-east-1") as any },
-        cloudflare: { version: "5.49.1", ...(cloudflareApiToken !== "" ? { apiToken: cloudflareApiToken } : {}) },
+        cloudflare: { version: "6.13.0", ...(cloudflareApiToken !== "" ? { apiToken: cloudflareApiToken } : {}) },
       },
     };
   },

@@ -13,7 +13,7 @@
     "infra:deploy": "bun --cwd infra run deploy:production"
   },
   "dependencies": {
-    "@solidjs/router": "1.0.0",
+    "@solidjs/router": "2.0.0-next.16",
     "@solidjs/web": "2.0.0-rc.0",
     "solid-js": "2.0.0-rc.0"
   },
