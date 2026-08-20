@@ -36,25 +36,34 @@
 .pulse {
   fill: none;
   stroke: url(#exact-current);
-  stroke-width: 3.4;
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
-  stroke-dasharray: .055 .945;
+  stroke-dasharray: .075 .925;
   stroke-dashoffset: 1;
   opacity: 0;
   animation: currentFlow 18s linear infinite;
 }
 
-.route2 { animation-delay: 6s; }
-.route3 { animation-delay: 12s; }
+.halo {
+  stroke-width: 8;
+  opacity: 0;
+  filter: blur(5px);
+}
+
+.core {
+  stroke-width: 2.6;
+}
+
+.route2 .pulse { animation-delay: 6s; }
+.route3 .pulse { animation-delay: 12s; }
 
 .summit {
   fill: #081510;
   stroke: #ffe0a3;
   stroke-width: 2;
-  transform-origin: 884px 197px;
-  opacity: .2;
+  transform-origin: 900px 201px;
+  opacity: .18;
   animation: summitFlare 6s ease-out infinite;
 }
 
@@ -73,15 +82,16 @@
 
 @keyframes currentFlow {
   0%, 2% { opacity: 0; stroke-dashoffset: 1; }
-  5% { opacity: .95; }
-  28% { opacity: 1; stroke-dashoffset: 0; }
-  32%, 100% { opacity: 0; stroke-dashoffset: -.06; }
+  4% { opacity: .9; }
+  26% { opacity: 1; stroke-dashoffset: 0; }
+  31%, 100% { opacity: 0; stroke-dashoffset: -.075; }
 }
 
 @keyframes summitFlare {
-  0%, 72% { opacity: .18; transform: scale(1); }
-  82% { opacity: 1; transform: scale(1.9); }
-  94%, 100% { opacity: .2; transform: scale(1); }
+  0%, 73% { opacity: .18; transform: scale(1); }
+  82% { opacity: 1; transform: scale(2.1); }
+  91% { opacity: .65; transform: scale(1.25); }
+  100% { opacity: .18; transform: scale(1); }
 }
 
 @media (min-width: 1000px) {
@@ -89,17 +99,16 @@
 }
 
 @media (min-width: 1701px) {
-  .reference {
-    padding-inline: calc((100vw - 1700px) / 2);
-  }
+  .reference { padding-inline: calc((100vw - 1700px) / 2); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .pulse {
     animation: none;
-    opacity: .18;
+    opacity: .12;
     stroke-dasharray: none;
     stroke-dashoffset: 0;
   }
-  .summit { animation: none; opacity: .4; }
+  .halo { opacity: .05; }
+  .summit { animation: none; opacity: .35; }
 }
