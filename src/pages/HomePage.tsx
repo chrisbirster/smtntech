@@ -1,27 +1,27 @@
 import { For } from "solid-js";
 import HeroMountainArt from "../components/HeroMountainArt";
+import DevcastCover from "../components/DevcastCover";
 import SectionHeading from "../components/SectionHeading";
 import ContentCard from "../components/ContentCard";
 import { articles, clients, episodes, projects, showcase } from "../data/content";
 import styles from "./HomePage.module.css";
-import mockStyles from "./HomePageMockup.module.css";
 
 const communityActivity = [
-  { icon: "◉", label: "Community", detail: "Founding members wanted", meta: "help shape what comes next", tone: "green" },
-  { icon: "#", label: "Devcast", detail: "Topic suggestions open", meta: "monthly show in development", tone: "orange" },
-  { icon: "⑂", label: "Open source", detail: "CoolShell is forming", meta: "contributors welcome", tone: "green" },
-  { icon: "⌖", label: "Meetup", detail: "Planning is underway", meta: "venue + format wanted", tone: "orange" },
-  { icon: "↗", label: "Showcase", detail: "Share what you build", meta: "unfinished projects welcome", tone: "green" },
+  { avatar: "CB", title: "Chris proposed CoolShell", detail: "Open community shell project", meta: "contributors wanted", tone: "person" },
+  { avatar: "JS", title: "Topic ideas are open", detail: "What should the Devcast cover?", meta: "suggest a topic", tone: "person" },
+  { avatar: "↗", title: "Meeting notes on GitHub", detail: "Open notes, decisions, and links", meta: "public by default", tone: "repo" },
+  { avatar: "PA", title: "Meetup planning started", detail: "Help shape venue and format", meta: "planning phase", tone: "person" },
+  { avatar: "＋", title: "Show us what you build", detail: "Projects do not need to be finished", meta: "submit a project", tone: "repo" },
 ] as const;
 
 export default function HomePage() {
   document.title = "South Mountain Technologies — Build locally. Share openly.";
 
-  return <div class={mockStyles.home}>
-    <section class={`container ${styles.hero} ${mockStyles.hero} ${mockStyles.fullContainer}`}>
-      <div class={`${styles.heroVisual} ${mockStyles.heroVisual}`}>
+  return <div class={styles.home}>
+    <section class={`container ${styles.hero}`}>
+      <div class={styles.heroArt}>
         <HeroMountainArt />
-        <aside class={`${styles.statusPanel} ${mockStyles.statusPanel}`} aria-label="Community status">
+        <aside class={styles.statusPanel} aria-label="Community status">
           <div><span class={styles.statusIcon}>◎</span><span>Community status</span><strong>Forming now</strong><i /></div>
           <div><span class={styles.statusIcon}>◉</span><span>Monthly podcast</span><strong>Coming soon</strong><i data-warm /></div>
           <div><span class={styles.statusIcon}>□</span><span>Local meetup</span><strong>Planning phase</strong><i /></div>
@@ -29,14 +29,13 @@ export default function HomePage() {
         </aside>
       </div>
 
-      <div class={`${styles.heroCopy} ${mockStyles.heroCopy}`}>
-        <span class="eyebrow">South Mountain, Pennsylvania</span>
-        <h1 class={mockStyles.headline}>
-          <span>Build locally<span class={mockStyles.punctuation}>.</span></span>
-          <span>Share openly<span class={mockStyles.punctuation}>.</span></span>
-          <span>Geek out together<span class={mockStyles.punctuation}>.</span></span>
+      <div class={styles.heroCopy}>
+        <h1>
+          <span>Build locally<span>.</span></span>
+          <span>Share openly<span>.</span></span>
+          <span>Geek out together<span>.</span></span>
         </h1>
-        <p class={`lede ${mockStyles.lede}`}>South Mountain Technologies is a developer community for South Mountain, Pennsylvania. We build software, share knowledge, and lift each other up—online and in person. All experience levels, all kinds of projects, one mountain.</p>
+        <p>South Mountain Technologies is a developer community for South Mountain, Pennsylvania. We build software, share knowledge, and lift each other up—online and in person. All experience levels, all kinds of projects, one mountain.</p>
         <div class={styles.heroActions}>
           <a class="button" data-variant="primary" href="/join"><span aria-hidden="true">◎</span> Join the Community</a>
           <a class="button" href="/events"><span aria-hidden="true">▣</span> See Upcoming Events</a>
@@ -45,24 +44,27 @@ export default function HomePage() {
       </div>
     </section>
 
-    <section class={`container ${styles.activity} ${mockStyles.activity} ${mockStyles.fullContainer}`} aria-label="Community activity">
-      <div class={styles.activityHeading}><span>△ From the Community</span><a href="/community">View all activity →</a></div>
-      <div class={`${styles.activityGrid} ${mockStyles.activityGrid}`}>
-        <For each={communityActivity}>{item => <div class={`${styles.activityItem} ${mockStyles.activityItem}`}>
-          <span class={styles.avatar} data-tone={item.tone}>{item.icon}</span>
-          <p><strong>{item.label}</strong><br /><a href="/community">{item.detail}</a><small>{item.meta}</small></p>
-        </div>}</For>
+    <section class={`container ${styles.activity}`} aria-label="Community activity">
+      <div class={styles.activityHeading}>
+        <span>△ From the Community</span>
+        <a href="/community">View all activity →</a>
+      </div>
+      <div class={styles.activityGrid}>
+        <For each={communityActivity}>{item => <article class={styles.activityItem}>
+          <span class={styles.avatar} data-tone={item.tone}>{item.avatar}</span>
+          <div><strong>{item.title}</strong><p>{item.detail}</p><small>{item.meta}</small></div>
+        </article>}</For>
       </div>
     </section>
 
-    <section class={`container ${styles.splitSection} ${mockStyles.splitSection} ${mockStyles.fullContainer}`}>
+    <section class={`container ${styles.editorial}`}>
       <div class={styles.podcastColumn}>
-        <SectionHeading eyebrow="Featured podcast" title="From the Mountain" action={{label:"Podcast",href:"/podcast"}} />
-        <article class={`${styles.podcastFeature} ${mockStyles.podcastFeature}`}>
+        <header class={styles.sectionHeader}>
+          <div><span>◉ &nbsp; Featured podcast</span><h2>From the Mountain</h2></div>
+        </header>
+        <article class={styles.podcastFeature}>
           <a class={styles.podcastCover} href={`/podcast/${episodes[0].slug}`} aria-label="Open South Mountain Devcast">
-            <span class={styles.coverRidges} aria-hidden="true" />
-            <strong>SOUTH<br />MOUNTAIN<br />DEVCAST</strong>
-            <span class={styles.mic} aria-hidden="true">◉</span>
+            <DevcastCover />
           </a>
           <div class={styles.podcastDetails}>
             <span class={styles.comingSoon}>Coming soon</span>
@@ -79,13 +81,16 @@ export default function HomePage() {
       </div>
 
       <div class={styles.articlesColumn}>
-        <SectionHeading eyebrow="Latest articles" title="What We’re Talking About" action={{label:"View all articles",href:"/articles"}} />
+        <header class={styles.sectionHeader}>
+          <div><span>&lt;/&gt; &nbsp; Latest articles</span><h2>What We’re Talking About</h2></div>
+          <a href="/articles">View all articles →</a>
+        </header>
         <div class={styles.articleGrid}>
-          <For each={articles.slice(0,4)}>{item => <article class={`${styles.articleCard} ${mockStyles.articleCard}`}>
-            <span class={styles.articleEyebrow}>{item.eyebrow}</span>
+          <For each={articles.slice(0,4)}>{item => <article class={styles.articleCard}>
+            <span>{item.eyebrow}</span>
             <h3><a href={`/articles/${item.slug}`}>{item.title}</a></h3>
             <p>{item.summary}</p>
-            <footer><span>Draft · {item.meta ?? "Read"}</span><a href={`/articles/${item.slug}`} aria-label={`Read ${item.title}`}>▱</a></footer>
+            <footer><small>Draft &nbsp; • &nbsp; {item.meta ?? "Read"}</small><a href={`/articles/${item.slug}`} aria-label={`Read ${item.title}`}>▱</a></footer>
           </article>}</For>
         </div>
       </div>
