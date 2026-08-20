@@ -1,0 +1,14 @@
+.article { padding-block: var(--space-5) var(--space-6); }
+.back { display: inline-block; margin-bottom: var(--space-4); color: var(--muted); font: 700 .75rem var(--font-mono); }
+.article header { max-width: 860px; }
+.article h1 { margin-bottom: 1rem; font-size: var(--step-4); }
+.tags { display: flex; gap: .45rem; flex-wrap: wrap; margin-top: 1.4rem; }
+.body { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; gap: var(--space-5); margin-top: var(--space-5); padding-top: var(--space-4); border-top: 1px solid var(--line); }
+.body > div { max-width: 72ch; }
+.body p { font-size: var(--step-1); }
+.body h2 { margin-top: 2.5rem; font-size: var(--step-2); }
+.body aside { align-self: start; position: sticky; top: 7rem; padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-soft); }
+.body aside strong { color: var(--success); font: 700 .8rem var(--font-mono); }
+.missing { padding-block: 8rem; text-align: center; }
+.missing h1 { font-size: var(--step-3); }
+@media (max-width: 800px) { .body { grid-template-columns: 1fr; } .body aside { position: static; } }

@@ -1,0 +1,36 @@
+.hero { padding-block: var(--space-6) var(--space-5); }
+.hero h1 { max-width: 16ch; margin-bottom: 1rem; font-size: var(--step-4); }
+.hero p { max-width: 68ch; font-size: var(--step-1); }
+.heroActions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.4rem; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; }
+.grid[data-two="true"] { grid-template-columns: repeat(2, 1fr); }
+.section { margin-block: var(--space-5) var(--space-6); }
+.feature { display: grid; grid-template-columns: 1.3fr .7fr; gap: 1rem; }
+.sidebar { padding: var(--space-3); border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-soft); }
+.sidebar h3 { font-size: var(--step-1); }
+.sidebar ul { padding-left: 1.1rem; color: var(--muted); }
+.sidebar li { margin-block: .45rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.2rem; }
+.showcaseGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; }
+.showcaseCard { padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-elevated); }
+.showcasePreview { min-height: 11rem; display: grid; place-content: center; margin: -1rem -1rem 1rem; border-bottom: 1px solid var(--line); background: linear-gradient(135deg, var(--ink-850), var(--ink-950)); color: var(--success); font: 800 1.4rem var(--font-mono); }
+.showcaseCard small { color: var(--accent); font-family: var(--font-mono); }
+.showcaseCard div:last-child { display: flex; gap: .4rem; flex-wrap: wrap; }
+.values { display: grid; grid-template-columns: repeat(2, 1fr); gap: .9rem; }
+.value { padding: var(--space-3); border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-elevated); }
+.value b { color: var(--success); font-family: var(--font-mono); }
+.form { display: grid; gap: 1rem; max-width: 760px; }
+.formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.field { display: grid; gap: .35rem; }
+.field label { color: var(--muted); font: 650 .75rem var(--font-mono); }
+.field input, .field textarea, .field select { width: 100%; border: 1px solid var(--line-strong); border-radius: .65rem; background: var(--bg-elevated); color: var(--fg); padding: .8rem .85rem; }
+.field textarea { min-height: 9rem; resize: vertical; }
+.notice { padding: 1rem; border-left: 3px solid var(--success); background: color-mix(in oklab, var(--success) 7%, transparent); color: var(--muted); }
+.notes { display: grid; gap: .8rem; }
+.note { display: grid; grid-template-columns: 8rem 1fr auto; gap: 1rem; align-items: center; padding: 1rem; border-block: 1px solid var(--line); text-decoration: none; }
+.note:hover { background: var(--bg-soft); }
+.note time { color: var(--success); font: 650 .72rem var(--font-mono); }
+.note strong { font-size: 1rem; }
+.note span { color: var(--accent); }
+@media (max-width: 900px) { .grid, .showcaseGrid { grid-template-columns: 1fr 1fr; } .feature { grid-template-columns: 1fr; } }
+@media (max-width: 650px) { .grid, .grid[data-two="true"], .showcaseGrid, .values, .formRow { grid-template-columns: 1fr; } .note { grid-template-columns: 1fr auto; } .note time { grid-column: 1 / -1; } }

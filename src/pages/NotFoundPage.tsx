@@ -1,0 +1,3 @@
+import { A } from "@solidjs/router";
+import styles from "./DetailPage.module.css";
+export default function NotFoundPage() { document.title = "Not Found — South Mountain Technologies"; return <section class={`container ${styles.missing}`}><span class="eyebrow">404 // lost on the trail</span><h1>That page wandered off the mountain.</h1><p>Try the homepage, projects, or community page instead.</p><A class="button" data-variant="primary" href="/">Return home</A></section>; }
