@@ -1,8 +1,14 @@
-import styles from "./DevcastCover.module.css";
+import styles from './DevcastCover.module.css';
 
 export default function DevcastCover() {
   return (
-    <svg class={styles.cover} viewBox="0 0 300 430" preserveAspectRatio="none" role="img" aria-label="South Mountain Devcast cover art">
+    <svg
+      class={styles.cover}
+      viewBox="0 0 300 430"
+      preserveAspectRatio="none"
+      role="img"
+      aria-label="South Mountain Devcast cover art"
+    >
       <defs>
         <linearGradient id="devcast-sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#c8aa72" />
@@ -25,9 +31,20 @@ export default function DevcastCover() {
       <rect width="300" height="430" rx="6" fill="url(#devcast-sky)" />
       <rect width="300" height="430" rx="6" fill="url(#devcast-grain)" />
 
-      <path d="M-20 188 45 139l28 18 38-42 31 24 45-70 49 54 35-34 49 69 22-18 48 48v83H-20Z" fill="url(#devcast-back)" opacity=".9" />
-      <path d="M-12 224 37 184l34 22 46-66 33 38 42-77 41 58 28-32 51 65 34-27 45 48v98H-12Z" fill="#33462f" opacity=".92" />
-      <path d="M-18 258 28 232l38 20 51-78 37 42 43-92 42 65 33-39 45 66 33-28 51 53v189H-18Z" fill="url(#devcast-front)" />
+      <path
+        d="M-20 188 45 139l28 18 38-42 31 24 45-70 49 54 35-34 49 69 22-18 48 48v83H-20Z"
+        fill="url(#devcast-back)"
+        opacity=".9"
+      />
+      <path
+        d="M-12 224 37 184l34 22 46-66 33 38 42-77 41 58 28-32 51 65 34-27 45 48v98H-12Z"
+        fill="#33462f"
+        opacity=".92"
+      />
+      <path
+        d="M-18 258 28 232l38 20 51-78 37 42 43-92 42 65 33-39 45 66 33-28 51 53v189H-18Z"
+        fill="url(#devcast-front)"
+      />
 
       <g fill="none" stroke="#a98b4f" stroke-width="1" opacity=".28">
         <path d="M-10 279 29 251l37 18 50-72 38 39 42-86 43 61 34-36 45 61 35-25 50 48" />
@@ -40,9 +57,15 @@ export default function DevcastCover() {
       </g>
 
       <g class={styles.title}>
-        <text x="27" y="292">SOUTH</text>
-        <text x="27" y="330">MOUNTAIN</text>
-        <text x="27" y="368">DEVCAST</text>
+        <text x="27" y="292">
+          SOUTH
+        </text>
+        <text x="27" y="330">
+          MOUNTAIN
+        </text>
+        <text x="27" y="368">
+          DEVCAST
+        </text>
       </g>
 
       <g class={styles.mic} transform="translate(210 319)">

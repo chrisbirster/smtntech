@@ -1,0 +1,81 @@
+.footer {
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--line);
+  background: color-mix(in oklab, var(--ink-900) 88%, black);
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--space-5);
+  padding-block: var(--space-5);
+}
+
+.footerBrand p {
+  max-width: 38ch;
+  margin-top: 1.2rem;
+}
+
+.footerBrand span {
+  color: var(--success);
+  font: 650 1rem/1.45 var(--font-mono);
+}
+
+.footer h2 {
+  margin-bottom: 0.8rem;
+  color: var(--accent);
+  font: 700 1rem/1.3 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footerGrid > div:not(:first-child) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.footerGrid a {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+.footerGrid a:hover {
+  color: var(--fg);
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font: 600 1rem/1.45 var(--font-mono);
+}
+
+:global(html[data-theme='light']) .footer {
+  --fg: var(--sand-100);
+  --muted: color-mix(in oklab, var(--sand-200) 70%, transparent);
+  --line: color-mix(in oklab, var(--moss-400) 20%, transparent);
+  --accent: var(--copper-400);
+  --success: var(--moss-400);
+}
+
+@media (max-width: 700px) {
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footerBrand {
+    grid-column: 1 / -1;
+  }
+
+  .footerBottom {
+    flex-direction: column;
+  }
+}

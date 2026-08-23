@@ -1,0 +1,326 @@
+.announcement {
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in oklab, var(--ink-800) 78%, var(--moss-500) 9%);
+  color: var(--muted);
+  font: 650 1rem/1.45 var(--font-mono);
+}
+
+.announcementInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 0.72rem;
+}
+
+.announcement p {
+  margin: 0;
+}
+
+.announcement span {
+  margin-right: 0.5rem;
+  color: var(--success);
+}
+
+.announcement a {
+  flex: 0 0 auto;
+  color: var(--accent-strong);
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in oklab, var(--bg) 84%, transparent);
+  backdrop-filter: blur(18px) saturate(130%);
+}
+
+.headerInner {
+  min-height: 6.15rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.desktopNav {
+  display: flex;
+  gap: clamp(0.8rem, 1.2vw, 1.35rem);
+  align-items: center;
+}
+
+.desktopNav > a,
+.moreMenu > summary {
+  position: relative;
+  padding-block: 2.15rem;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.desktopNav > a::after,
+.moreMenu > summary::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 1.25rem;
+  height: 2px;
+  scale: 0 1;
+  background: var(--accent);
+  transform-origin: left;
+  transition: scale 150ms ease;
+}
+
+.desktopNav > a:hover,
+.desktopNav > a.active,
+.moreMenu > summary:hover,
+.moreMenu > summary.active,
+.moreMenu[open] > summary {
+  color: var(--fg);
+}
+
+.desktopNav > a:hover::after,
+.desktopNav > a.active::after,
+.moreMenu > summary:hover::after,
+.moreMenu > summary.active::after,
+.moreMenu[open] > summary::after {
+  scale: 1 1;
+}
+
+.moreMenu {
+  position: relative;
+}
+
+.moreMenu > summary {
+  display: flex;
+  gap: 0.42rem;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+
+.moreMenu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.moreMenu > summary span {
+  color: var(--accent);
+  font-size: 1.2em;
+  line-height: 1;
+  transition: transform 150ms ease;
+}
+
+.moreMenu[open] > summary span {
+  transform: rotate(180deg);
+}
+
+.morePanel {
+  position: absolute;
+  top: calc(100% - 0.85rem);
+  right: -0.75rem;
+  min-width: 13rem;
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0.8rem;
+  background: color-mix(in oklab, var(--bg-elevated) 96%, black);
+  box-shadow: var(--shadow-deep);
+}
+
+.morePanel a {
+  min-height: 2.75rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: 0.55rem;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 680;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.morePanel a:hover,
+.morePanel a.active {
+  background: color-mix(in oklab, var(--accent) 10%, transparent);
+  color: var(--fg);
+}
+
+.actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.iconButton,
+.menuButton {
+  min-width: 3.6rem;
+  min-height: 3.6rem;
+  display: inline-grid;
+  place-items: center;
+  border: 2px solid var(--line-strong);
+  border-radius: 0.85rem;
+  background: transparent;
+  color: var(--fg);
+  font: 700 1rem var(--font-mono);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.iconButton:hover,
+.menuButton:hover {
+  border-color: var(--line-strong);
+  background: color-mix(in oklab, var(--accent) 7%, transparent);
+}
+
+.iconButton svg {
+  width: 1.55rem;
+  height: 1.55rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.iconButton .githubIcon {
+  width: 1.7rem;
+  height: 1.7rem;
+  fill: currentColor;
+  stroke: none;
+}
+
+.actions :global(.button) {
+  min-height: 3.6rem;
+  padding: 0.9rem 1.35rem;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+.menuButton,
+.mobileNav {
+  display: none;
+}
+
+.menuButton {
+  padding-inline: 0.7rem;
+}
+
+:global(html[data-theme='light']) .announcement {
+  --muted: color-mix(in oklab, var(--sand-200) 78%, transparent);
+  --line: color-mix(in oklab, var(--moss-400) 24%, transparent);
+  --success: var(--moss-400);
+  --accent-strong: var(--copper-400);
+}
+
+:global(html[data-theme='light']) .header {
+  background: color-mix(in oklab, var(--bg-elevated) 90%, transparent);
+  box-shadow: 0 10px 34px oklch(26% 0.04 var(--forest-h) / 0.09);
+}
+
+:global(html[data-theme='light']) .morePanel {
+  background: var(--bg-elevated);
+}
+
+@media (max-width: 1220px) {
+  .headerInner {
+    gap: 0.55rem;
+  }
+
+  .desktopNav {
+    gap: 0.72rem;
+  }
+
+  .desktopNav > a,
+  .moreMenu > summary {
+    font-size: 1rem;
+  }
+
+  .actions {
+    gap: 0.35rem;
+  }
+
+  .iconButton {
+    min-width: 3.2rem;
+    min-height: 3.2rem;
+  }
+
+  .iconButton svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .iconButton .githubIcon {
+    width: 1.55rem;
+    height: 1.55rem;
+  }
+
+  .actions :global(.button) {
+    min-height: 3.2rem;
+    padding: 0.72rem 0.9rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1160px) {
+  .desktopNav {
+    display: none;
+  }
+
+  .menuButton {
+    display: inline-grid;
+  }
+
+  .mobileNav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
+    width: var(--page);
+    margin-inline: auto;
+    padding-bottom: 1rem;
+  }
+
+  .mobileNav a {
+    padding: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: 0.6rem;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .actions > :first-child,
+  .iconButton {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .announcement {
+    font-size: 1rem;
+  }
+
+  .announcement a {
+    display: none;
+  }
+
+  .actions > *:not(.menuButton) {
+    display: none;
+  }
+
+  .menuButton {
+    min-width: 3rem;
+  }
+
+  .headerInner {
+    min-height: 5rem;
+  }
+}

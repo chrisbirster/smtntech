@@ -1,6 +1,55 @@
-import { For } from "solid-js";
-import ContentCard from "../components/ContentCard";
-import SectionHeading from "../components/SectionHeading";
-import { clients } from "../data/content";
-import styles from "./Pages.module.css";
-export default function ClientWorkPage() { document.title = "Client Work — South Mountain Technologies"; return <><header class={`container ${styles.hero}`}><span class="eyebrow">Community first. Client work too.</span><h1>Practical software for local organizations.</h1><p>Websites, storefronts, internal tools, prototypes, automation, and integrations — built around how the organization actually works.</p><div class={styles.heroActions}><a class="button" data-variant="primary" href="mailto:chris@southmountaintech.com?subject=Project%20inquiry">Start a Conversation</a><a class="button" href="/about">Why South Mountain Tech?</a></div></header><section class={`container ${styles.section}`}><SectionHeading eyebrow="Selected work" title="Projects already underway" /><div class={styles.grid} data-two="true"><For each={clients}>{item => <ContentCard item={item} featured />}</For></div></section><section class={`container ${styles.section}`}><SectionHeading eyebrow="How we help" title="Useful beats flashy" /><div class={styles.values}>{["Business websites","Custom storefronts","Internal tools","Technical prototypes","Automation & integrations","Maintenance & modernization"].map((x,i) => <div class={styles.value}><b>{String(i+1).padStart(2,"0")}</b><h3>{x}</h3></div>)}</div></section></>; }
+import { For } from 'solid-js';
+import ContentCard from '../components/ContentCard';
+import PageHero from '../components/PageHero';
+import SectionHeading from '../components/SectionHeading';
+import { clients } from '../data/content';
+import styles from './Pages.module.css';
+
+export default function ClientWorkPage() {
+  document.title = 'Client Work — South Mountain Technologies';
+  return (
+    <>
+      <PageHero
+        eyebrow="Practical software, clearly scoped"
+        title="Software that fits the way your organization works."
+        copy="We build websites, storefronts, internal tools, integrations, and prototypes for organizations that need maintainable software without unnecessary complexity."
+        actions={[
+          {
+            label: 'Start a conversation',
+            href: 'mailto:chris@southmountaintech.com?subject=Project%20inquiry',
+            primary: true,
+          },
+          { label: 'About South Mountain Technologies', href: '/about' },
+        ]}
+      />
+      <section class={`container ${styles.section}`}>
+        <SectionHeading eyebrow="Selected work" title="Projects Shaped Around Real Operations" />
+        <div class={styles.grid} data-two="true">
+          <For each={clients}>{(item) => <ContentCard item={item} featured />}</For>
+        </div>
+      </section>
+      <section class={`container ${styles.section}`}>
+        <SectionHeading
+          eyebrow="How we help"
+          title="Useful Software, Thoughtfully Delivered"
+          copy="Start with the problem, understand the workflow, and build only what the organization can use and maintain."
+        />
+        <div class={styles.values}>
+          {[
+            'Business websites',
+            'Custom storefronts',
+            'Internal tools',
+            'Technical prototypes',
+            'Automation & integrations',
+            'Maintenance & modernization',
+          ].map((item, index) => (
+            <div class={styles.value}>
+              <b>{String(index + 1).padStart(2, '0')}</b>
+              <h3>{item}</h3>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}

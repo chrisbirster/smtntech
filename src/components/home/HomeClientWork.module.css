@@ -1,0 +1,34 @@
+.clientSection {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  gap: var(--space-5);
+  align-items: center;
+  margin-block: var(--space-6);
+}
+
+.clientSection h2 {
+  font-size: var(--step-3);
+}
+
+.clientCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.clientCards article {
+  min-height: 17rem;
+}
+
+@media (max-width: 900px) {
+  .clientSection {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .clientCards {
+    grid-template-columns: 1fr;
+  }
+}

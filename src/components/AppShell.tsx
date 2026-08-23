@@ -1,115 +1,17 @@
-import { useLocation } from "@solidjs/router";
-import { For, Show, createSignal, type ParentProps } from "solid-js";
-import BrandMark from "./BrandMark";
-import SearchDialog from "./SearchDialog";
-import { navItems } from "../data/content";
-import styles from "./AppShell.module.css";
+import type { ParentProps } from 'solid-js';
+import SiteFooter from './shell/SiteFooter';
+import SiteHeader from './shell/SiteHeader';
+import styles from './AppShell.module.css';
 
 export default function AppShell(props: ParentProps) {
-  const location = useLocation();
-  const storedTheme = localStorage.getItem("smt-theme");
-  const initialTheme: "dark" | "light" = storedTheme === "light" ? "light" : "dark";
-  const [menuOpen, setMenuOpen] = createSignal(false);
-  const [theme, setTheme] = createSignal<"dark" | "light">(initialTheme);
-
-  document.documentElement.dataset.theme = initialTheme;
-
-  const toggleTheme = () => {
-    const next = theme() === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.dataset.theme = next;
-    localStorage.setItem("smt-theme", next);
-  };
-
-  const isActive = (href: string) =>
-    location.pathname === href || (href !== "/" && location.pathname.startsWith(`${href}/`));
-
   return (
     <div class={styles.shell}>
-      <div class={styles.announcement}>
-        <div class="container">
-          <span>▲</span> We’re in launch mode — building the clubhouse for developers around South Mountain, PA.
-          <a href="/join">Help shape it →</a>
-        </div>
-      </div>
+      <SiteHeader />
 
-      <header class={styles.header}>
-        <div class={`container ${styles.headerInner}`}>
-          <BrandMark />
-          <nav class={styles.desktopNav} aria-label="Main navigation">
-            <a href="/" class={location.pathname === "/" ? styles.active : undefined}>Home</a>
-            <For each={navItems}>{([label, href]) =>
-              <a href={href} class={isActive(href) ? styles.active : undefined}>{label}</a>
-            }</For>
-          </nav>
-
-          <div class={styles.actions}>
-            <SearchDialog />
-            <button
-              class={styles.iconButton}
-              type="button"
-              onClick={toggleTheme}
-              aria-label={`Switch to ${theme() === "dark" ? "light" : "dark"} theme`}
-            >
-              <span aria-hidden="true">{theme() === "dark" ? "☼" : "☾"}</span>
-            </button>
-            <a
-              class={styles.iconButton}
-              href="https://github.com/chrisbirster/smtntech"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub repository"
-            >GH</a>
-            <a class="button" data-variant="primary" href="/join">Join the Community</a>
-            <button
-              class={styles.menuButton}
-              type="button"
-              onClick={() => setMenuOpen(v => !v)}
-              aria-expanded={menuOpen() ? "true" : "false"}
-              aria-controls="mobile-menu"
-            >Menu</button>
-          </div>
-        </div>
-
-        <Show when={menuOpen()}>
-          <nav id="mobile-menu" class={styles.mobileNav} aria-label="Mobile navigation">
-            <a href="/" onClick={() => setMenuOpen(false)}>Home</a>
-            <For each={navItems}>{([label, href]) =>
-              <a href={href} onClick={() => setMenuOpen(false)}>{label}</a>
-            }</For>
-            <a href="/notes" onClick={() => setMenuOpen(false)}>Meeting Notes</a>
-            <a href="/join" onClick={() => setMenuOpen(false)}>Join the Community</a>
-          </nav>
-        </Show>
-      </header>
-
-      <main id="main-content" class={styles.main}>{props.children}</main>
-
-      <footer class={styles.footer}>
-        <div class={`container ${styles.footerGrid}`}>
-          <div class={styles.footerBrand}>
-            <BrandMark />
-            <p>Building software. Sharing knowledge. Strengthening our local tech community.</p>
-            <span>⌖ South Mountain, Pennsylvania</span>
-          </div>
-          <div>
-            <h3>Explore</h3>
-            <a href="/podcast">Podcast</a><a href="/articles">Articles</a><a href="/projects">Projects</a><a href="/events">Events</a>
-          </div>
-          <div>
-            <h3>Community</h3>
-            <a href="/community">Community</a><a href="/join">Join</a><a href="/notes">Meeting Notes</a><a href="/showcase">Showcase</a>
-          </div>
-          <div>
-            <h3>Organization</h3>
-            <a href="/about">About</a><a href="/client-work">Client Work</a><a href="mailto:chris@southmountaintech.com">Email</a><a href="https://github.com/chrisbirster/smtntech">GitHub</a>
-          </div>
-        </div>
-        <div class={`container ${styles.footerBottom}`}>
-          <span>© 2026 South Mountain Technologies</span>
-          <span>Built near South Mountain, PA ♡</span>
-        </div>
-      </footer>
+      <main id="main-content" class={styles.main} tabindex={-1}>
+        {props.children}
+      </main>
+      <SiteFooter />
     </div>
   );
 }

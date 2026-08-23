@@ -1,0 +1,25 @@
+.region {
+  position: relative;
+  overflow: clip;
+}
+
+:global(html[data-theme='light']) .region {
+  --bg: var(--ink-950);
+  --bg-elevated: color-mix(in oklab, var(--ink-850) 88%, black);
+  --bg-soft: color-mix(in oklab, var(--ink-900) 85%, var(--moss-500) 4%);
+  --fg: var(--sand-100);
+  --muted: color-mix(in oklab, var(--sand-200) 66%, transparent);
+  --line: color-mix(in oklab, var(--moss-400) 20%, transparent);
+  --line-strong: color-mix(in oklab, var(--moss-400) 38%, transparent);
+  --accent: var(--copper-500);
+  --accent-strong: var(--copper-400);
+  --success: var(--moss-400);
+  background:
+    radial-gradient(
+      circle at 72% 14%,
+      color-mix(in oklab, var(--moss-500) 7%, transparent),
+      transparent 36rem
+    ),
+    linear-gradient(180deg, oklch(14% 0.027 163), oklch(12.4% 0.023 162));
+  box-shadow: inset 0 -1px color-mix(in oklab, var(--moss-400) 22%, transparent);
+}

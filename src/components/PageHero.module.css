@@ -1,0 +1,21 @@
+.hero {
+  padding-block: var(--space-6) var(--space-5);
+}
+
+.hero h1 {
+  max-width: 16ch;
+  margin-bottom: 1rem;
+  font-size: var(--step-4);
+}
+
+.hero p {
+  max-width: 68ch;
+  font-size: var(--step-1);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.4rem;
+}

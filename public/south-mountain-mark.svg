@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 220" role="img" aria-labelledby="title description">
+  <title id="title">South Mountain Technologies mark</title>
+  <desc id="description">A circuit-inspired mountain in copper and moss green.</desc>
+  <defs>
+    <linearGradient id="trace" x1="128" y1="18" x2="128" y2="204" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f0a457" />
+      <stop offset="0.43" stop-color="#d98439" />
+      <stop offset="0.58" stop-color="#a48d42" />
+      <stop offset="0.72" stop-color="#789947" />
+      <stop offset="1" stop-color="#5f7f3f" />
+    </linearGradient>
+    <linearGradient id="copper" x1="88" y1="30" x2="180" y2="128" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f0a457" />
+      <stop offset="1" stop-color="#ce7732" />
+    </linearGradient>
+    <linearGradient id="moss" x1="32" y1="124" x2="220" y2="205" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#88a84d" />
+      <stop offset="1" stop-color="#58773c" />
+    </linearGradient>
+  </defs>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 201 128 18 236 201" stroke="url(#trace)" stroke-width="8" />
+    <path d="M48 201 128 62 208 201" stroke="url(#trace)" stroke-width="6" />
+
+    <path d="m128 18-25 43 25-17 24 17" stroke="url(#copper)" stroke-width="6" />
+    <path d="m103 61 25 31 24-31" stroke="url(#copper)" stroke-width="5" />
+    <path d="m91 82 37-20 38 22 19 30-57 36-57-36Z" stroke="url(#trace)" stroke-width="6" />
+
+    <path d="m20 201 53-49 55 37" stroke="url(#moss)" stroke-width="7" />
+    <path d="m48 201 48-49 34 49" stroke="url(#moss)" stroke-width="6" />
+    <path d="m84 201 44-51 45 51" stroke="url(#moss)" stroke-width="6" />
+    <path d="m128 201 34-49 47 49" stroke="url(#moss)" stroke-width="6" />
+    <path d="m163 181 21-29 52 49" stroke="url(#moss)" stroke-width="7" />
+
+    <path d="m71 114 57 36 63 47" stroke="url(#trace)" stroke-width="5" />
+    <path d="m185 114-57 36-63 47" stroke="url(#trace)" stroke-width="5" />
+    <path d="M128 92v58" stroke="url(#trace)" stroke-width="5" />
+
+    <g stroke-width="4">
+      <circle cx="128" cy="18" r="5" stroke="#f0a457" />
+      <circle cx="103" cy="61" r="4" stroke="#e49345" />
+      <circle cx="152" cy="61" r="4" stroke="#e49345" />
+      <circle cx="91" cy="82" r="4" stroke="#db8439" />
+      <circle cx="166" cy="84" r="4" stroke="#db8439" />
+      <circle cx="71" cy="114" r="4" stroke="#a48d42" />
+      <circle cx="185" cy="114" r="4" stroke="#a48d42" />
+      <circle cx="128" cy="150" r="4" stroke="#789947" />
+      <circle cx="65" cy="197" r="4" stroke="#668540" />
+      <circle cx="191" cy="197" r="4" stroke="#668540" />
+    </g>
+  </g>
+</svg>

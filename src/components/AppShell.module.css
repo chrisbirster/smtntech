@@ -1,55 +1,11 @@
-.shell { min-height: 100vh; }
-.announcement { border-bottom: 1px solid var(--line); background: color-mix(in oklab, var(--ink-800) 78%, var(--moss-500) 9%); color: var(--muted); font: 650 .78rem/1.4 var(--font-mono); }
-.announcement > div { padding-block: .64rem; }
-.announcement span { color: var(--success); margin-right: .35rem; }
-.announcement a { float: right; color: var(--accent); }
-.header { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--line); background: color-mix(in oklab, var(--bg) 84%, transparent); backdrop-filter: blur(18px) saturate(130%); }
-.headerInner { min-height: 5.15rem; display: flex; gap: 1rem; align-items: center; justify-content: space-between; }
-.desktopNav { display: flex; gap: clamp(.58rem, 1.12vw, 1.05rem); align-items: center; }
-.desktopNav a { position: relative; padding-block: 1.72rem; color: var(--muted); font-size: .8rem; font-weight: 680; text-decoration: none; white-space: nowrap; }
-.desktopNav a::after { content: ""; position: absolute; inset: auto 0 1rem; height: 2px; scale: 0 1; background: var(--accent); transform-origin: left; transition: scale 150ms ease; }
-.desktopNav a:hover, .desktopNav a.active { color: var(--fg); }
-.desktopNav a:hover::after, .desktopNav a.active::after { scale: 1 1; }
-.actions { display: flex; flex: 0 0 auto; gap: .42rem; align-items: center; }
-.iconButton, .menuButton { min-width: 2.55rem; min-height: 2.55rem; display: inline-grid; place-items: center; border: 1px solid var(--line); border-radius: .65rem; background: transparent; color: var(--fg); font: 700 .7rem var(--font-mono); text-decoration: none; cursor: pointer; }
-.actions :global(.button) { min-height: 2.75rem; padding: .68rem 1rem; white-space: nowrap; font-size: .82rem; }
-.menuButton { display: none; padding-inline: .7rem; }
-.mobileNav { display: none; }
-.main { overflow: clip; }
-.footer { margin-top: var(--space-6); border-top: 1px solid var(--line); background: color-mix(in oklab, var(--ink-900) 88%, black); }
-.footerGrid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: var(--space-5); padding-block: var(--space-5); }
-.footerBrand p { max-width: 38ch; margin-top: 1.2rem; }
-.footerBrand span { color: var(--success); font: 650 .75rem var(--font-mono); }
-.footer h3 { margin-bottom: .8rem; color: var(--accent); font: 700 .75rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
-.footerGrid > div:not(:first-child) { display: flex; flex-direction: column; gap: .45rem; }
-.footerGrid a { color: var(--muted); text-decoration: none; font-size: .9rem; }
-.footerGrid a:hover { color: var(--fg); }
-.footerBottom { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.1rem; border-top: 1px solid var(--line); color: var(--muted); font: 600 .7rem var(--font-mono); }
-@media (max-width: 1220px) {
-  .headerInner { gap: .55rem; }
-  .desktopNav { gap: .48rem; }
-  .desktopNav a { font-size: .75rem; }
-  .actions { gap: .28rem; }
-  .iconButton { min-width: 2.3rem; min-height: 2.3rem; font-size: .65rem; }
-  .actions :global(.button) { min-height: 2.5rem; padding: .56rem .72rem; font-size: .73rem; }
+.shell {
+  min-height: 100vh;
 }
-@media (max-width: 1020px) {
-  .desktopNav { display: none; }
-  .menuButton { display: inline-grid; }
-  .mobileNav { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .35rem; width: var(--page); margin-inline: auto; padding-bottom: 1rem; }
-  .mobileNav a { padding: .75rem; border: 1px solid var(--line); border-radius: .6rem; text-decoration: none; }
+
+.main {
+  overflow: clip;
 }
-@media (max-width: 900px) {
-  .actions > :first-child,
-  .iconButton { display: none; }
-}
-@media (max-width: 700px) {
-  .announcement { font-size: .68rem; }
-  .announcement a { display: none; }
-  .actions > *:not(.menuButton) { display: none; }
-  .menuButton { min-width: 3rem; }
-  .headerInner { min-height: 4.5rem; }
-  .footerGrid { grid-template-columns: 1fr 1fr; }
-  .footerBrand { grid-column: 1 / -1; }
-  .footerBottom { flex-direction: column; }
+
+.main:focus {
+  outline: none;
 }

@@ -1,3 +1,73 @@
-import styles from "./Pages.module.css";
-const values = [["Curiosity over credentials", "You do not need a computer science degree, a senior title, or a perfect GitHub graph."], ["Build in public", "Share unfinished work and explain decisions so other people can learn alongside you."], ["Teach what you know", "The thing that feels obvious to you may be the explanation someone else needed."], ["Leave the trail better", "Document what you learn, welcome new contributors, and improve the path behind you."]];
-export default function CommunityPage() { document.title = "Community — South Mountain Technologies"; return <><header class={`container ${styles.hero}`}><span class="eyebrow">Everyone starts somewhere</span><h1>A developer clubhouse, not a gatekeeping club.</h1><p>Professional engineers, students, designers, makers, sysadmins, hobbyists, and curious beginners are all welcome. You do not have to live directly on South Mountain to participate.</p><div class={styles.heroActions}><a class="button" data-variant="primary" href="/join">Join the Community</a><a class="button" href="/projects">Find a Project</a><a class="button" href="/notes">Read Meeting Notes</a></div></header><section class={`container ${styles.section}`}><div class={styles.values}>{values.map(([title,copy],i) => <article class={styles.value}><b>{String(i+1).padStart(2,"0")}</b><h2>{title}</h2><p>{copy}</p></article>)}</div></section><section class={`container ${styles.section}`}><div class={styles.feature}><div><span class="eyebrow">How to participate</span><h2>Show up with curiosity.</h2><p>You can attend a meetup, propose a talk, contribute to a project, write an article, suggest a podcast topic, share a weird repository, provide a venue, sponsor food, or just follow along until something grabs you.</p></div><aside class={styles.sidebar}><h3>Common questions</h3><ul><li>Beginners can participate.</li><li>Unfinished projects are welcome.</li><li>Companies can participate without owning the room.</li><li>Community projects should be open and documented.</li><li>The goal is to keep participation accessible.</li></ul></aside></div></section></>; }
+import PageHero from '../components/PageHero';
+import styles from './Pages.module.css';
+
+const values = [
+  [
+    'Curiosity over credentials',
+    'You do not need a computer science degree, a senior title, or a perfect GitHub graph. Show up ready to learn and contribute.',
+  ],
+  [
+    'Build in public',
+    'Share unfinished work and explain the decisions behind it so other people can learn alongside you.',
+  ],
+  [
+    'Teach what you know',
+    'The detail that feels obvious to you may be the explanation another developer has been looking for.',
+  ],
+  [
+    'Leave the trail better',
+    'Document what you learn, welcome new contributors, and improve the path for the person who arrives next.',
+  ],
+];
+
+export default function CommunityPage() {
+  document.title = 'Community — South Mountain Technologies';
+  return (
+    <>
+      <PageHero
+        eyebrow="Across the South Mountain region"
+        title="A local developer community with room for every experience level."
+        copy="Professional engineers, students, designers, makers, sysadmins, hobbyists, and curious beginners are welcome. Bring a project, a question, or an interest in meeting the people building technology nearby."
+        actions={[
+          { label: 'Join the community', href: '/join', primary: true },
+          { label: 'Find a project', href: '/projects' },
+          { label: 'Read meeting notes', href: '/notes' },
+        ]}
+      />
+      <section class={`container ${styles.section}`}>
+        <div class={styles.values}>
+          {values.map(([title, copy], index) => (
+            <article class={styles.value}>
+              <b>{String(index + 1).padStart(2, '0')}</b>
+              <h2>{title}</h2>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section class={`container ${styles.section}`}>
+        <div class={styles.feature}>
+          <div>
+            <span class="eyebrow">How to participate</span>
+            <h2>Start with what interests you.</h2>
+            <p>
+              Attend a meetup, propose a short talk, contribute to a project, write a technical
+              note, suggest a podcast topic, share a useful repository, help with a venue, or follow
+              along until something catches your attention.
+            </p>
+          </div>
+          <aside class={styles.sidebar}>
+            <h3>What to expect</h3>
+            <ul>
+              <li>Beginners and experienced developers participate together.</li>
+              <li>Unfinished projects and practical questions are welcome.</li>
+              <li>Companies may participate, but the community is not a sales floor.</li>
+              <li>Community projects should be open and documented.</li>
+              <li>Participation should remain accessible and respectful.</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}

@@ -1,6 +1,57 @@
-import { For } from "solid-js";
-import ContentCard from "../components/ContentCard";
-import SectionHeading from "../components/SectionHeading";
-import { episodes } from "../data/content";
-import styles from "./Pages.module.css";
-export default function PodcastPage() { document.title = "Podcast — South Mountain Technologies"; return <><header class={`container ${styles.hero}`}><span class="eyebrow">Coming soon</span><h1>South Mountain Devcast</h1><p>Monthly conversations about software, tools, open source, and whatever developers around the mountain cannot stop talking about.</p><div class={styles.heroActions}><a class="button" data-variant="primary" href="/join">Suggest a Topic</a><a class="button" href="/community">Meet the Community</a></div><div class={styles.chips}>{["AI","Zig","CSS","Open Source","Developer Tools","Self-Hosting","Community"].map(tag => <span class="tag">{tag}</span>)}</div></header><section class={`container ${styles.section}`}><div class={styles.feature}><ContentCard item={episodes[0]} featured /><aside class={styles.sidebar}><span class="eyebrow">Looking ahead</span><h3>Guest ambitions, not announcements.</h3><p>Long term, we want respected maintainers, educators, creators, and builders to join the conversation. Nobody is presented as confirmed until they actually are.</p><a class="button" href="/join">Suggest a future guest</a></aside></div></section><section class={`container ${styles.section}`}><SectionHeading eyebrow="Episode archive" title="Planned conversations" copy="The archive is intentionally honest: these are planned topics, not fake published episodes." /><div class={styles.grid}><For each={episodes}>{item => <ContentCard item={item} />}</For></div></section></>; }
+import { For } from 'solid-js';
+import ContentCard from '../components/ContentCard';
+import PageHero from '../components/PageHero';
+import SectionHeading from '../components/SectionHeading';
+import { episodes } from '../data/content';
+import styles from './Pages.module.css';
+
+export default function PodcastPage() {
+  document.title = 'Podcast — South Mountain Technologies';
+  return (
+    <>
+      <PageHero
+        eyebrow="Coming soon"
+        title="South Mountain Devcast"
+        copy="Conversations with local developers about software, open source, and the tools shaping their work."
+        actions={[
+          { label: 'Suggest a topic', href: '/join', primary: true },
+          { label: 'Meet the community', href: '/community' },
+        ]}
+      >
+        <div class={styles.chips}>
+          {['AI', 'Zig', 'CSS', 'Open Source', 'Developer Tools', 'Self-Hosting', 'Community'].map(
+            (tag) => (
+              <span class="tag">{tag}</span>
+            ),
+          )}
+        </div>
+      </PageHero>
+      <section class={`container ${styles.section}`}>
+        <div class={styles.feature}>
+          <ContentCard item={episodes[0]} featured />
+          <aside class={styles.sidebar}>
+            <span class="eyebrow">People we want to hear from</span>
+            <h3>Maintainers, educators, and builders with something useful to share.</h3>
+            <p>
+              We want conversations with people who can explain the decisions, tradeoffs, and
+              lessons behind their work—from the South Mountain region and beyond.
+            </p>
+            <a class="button" href="/join">
+              Suggest a future guest
+            </a>
+          </aside>
+        </div>
+      </section>
+      <section class={`container ${styles.section}`}>
+        <SectionHeading
+          eyebrow="On the workbench"
+          title="Planned Conversations"
+          copy="Topics currently being shaped with input from the community."
+        />
+        <div class={styles.grid}>
+          <For each={episodes}>{(item) => <ContentCard item={item} />}</For>
+        </div>
+      </section>
+    </>
+  );
+}

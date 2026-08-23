@@ -19,7 +19,6 @@ This project follows the Solid 2 RC package boundary: DOM rendering and JSX come
 ```bash
 git clone https://github.com/chrisbirster/smtntech.git
 cd smtntech
-git switch feat/solid-site-email-infra
 npm install
 npm run dev
 ```
@@ -29,8 +28,10 @@ Vite will normally serve the site at `http://localhost:5173`.
 Verify the web app with:
 
 ```bash
+npm run format:check
 npm run typecheck
 npm run build
+npm run test:visual
 ```
 
 Preview the production build with:
@@ -47,7 +48,17 @@ The Cloudflare StaticSite uses `index.html` as its fallback so deep links load c
 
 ## CSS architecture
 
-The implementation borrows architectural ideas from the Syntax.fm codebase without copying its brand or assets: OKLCH tokens, fluid `clamp()` typography, cascade layers, `color-mix()`, container queries, native gradient/mask texture, and component-local CSS Modules.
+The implementation borrows organizational ideas from the Syntax.fm codebase without copying its brand or assets. Global styles are intentionally small and layered by responsibility:
+
+- `src/styles/tokens.css` defines design tokens.
+- `src/styles/base.css` owns element defaults and accessibility foundations.
+- `src/styles/layout.css` contains shared layout primitives.
+- `src/styles/components.css` contains the few deliberately global UI classes.
+- Component-specific styling stays in a colocated CSS Module.
+
+Route components live in `src/pages`. Reusable page patterns live in `src/components`, while homepage-only sections and application-shell components are grouped under `src/components/home` and `src/components/shell` respectively. Pages should read as a composition of named components instead of containing an entire screen in one file.
+
+Run `npm run format` before committing. Prettier uses a 100-character print width, and source files should generally stay below 300–500 lines. When a file grows beyond that range, split it around a real UI or styling responsibility rather than creating arbitrary fragments.
 
 ## Email
 

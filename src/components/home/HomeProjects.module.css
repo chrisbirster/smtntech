@@ -1,0 +1,35 @@
+.projectsGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 1rem;
+}
+
+.stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.stack article {
+  min-height: 12rem;
+}
+
+.stack article:last-child {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 900px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .stack {
+    grid-template-columns: 1fr;
+  }
+
+  .stack article:last-child {
+    grid-column: auto;
+  }
+}

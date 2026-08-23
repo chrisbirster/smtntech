@@ -1,5 +1,5 @@
-import mountain from "../assets/mountain.png";
-import styles from "./HeroMountainArt.module.css";
+import mountain from '../assets/mountain.png';
+import styles from './HeroMountainArt.module.css';
 
 export default function HeroMountainArt() {
   return (

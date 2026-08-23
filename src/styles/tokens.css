@@ -20,16 +20,17 @@
     --bg-elevated: color-mix(in oklab, var(--ink-850) 88%, black);
     --bg-soft: color-mix(in oklab, var(--ink-900) 85%, var(--moss-500) 4%);
     --fg: var(--sand-100);
-    --muted: color-mix(in oklab, var(--sand-200) 66%, transparent);
+    --muted: color-mix(in oklab, var(--sand-200) 82%, transparent);
     --line: color-mix(in oklab, var(--moss-400) 20%, transparent);
-    --line-strong: color-mix(in oklab, var(--moss-400) 38%, transparent);
+    --line-strong: oklch(58% 0.07 var(--moss-h));
     --accent: var(--copper-500);
     --accent-strong: var(--copper-400);
     --success: var(--moss-400);
-    --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    --step--1: clamp(0.78rem, 0.75rem + 0.12vw, 0.9rem);
-    --step-0: clamp(0.98rem, 0.9rem + 0.25vw, 1.12rem);
+    --font-sans:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    --step--1: clamp(1rem, 0.97rem + 0.12vw, 1.08rem);
+    --step-0: clamp(1rem, 0.96rem + 0.25vw, 1.15rem);
     --step-1: clamp(1.2rem, 1.08rem + 0.42vw, 1.45rem);
     --step-2: clamp(1.55rem, 1.25rem + 0.95vw, 2.05rem);
     --step-3: clamp(2rem, 1.5rem + 1.5vw, 3rem);
@@ -46,16 +47,17 @@
     --shadow-deep: 0 30px 80px oklch(5% 0.02 var(--forest-h) / 0.38);
     --page: min(1440px, calc(100vw - 3rem));
   }
-  [data-theme="light"] {
-    --bg: oklch(96% 0.018 var(--sand-h));
-    --bg-elevated: white;
-    --bg-soft: oklch(93% 0.025 var(--sand-h));
-    --fg: oklch(20% 0.035 var(--forest-h));
-    --muted: oklch(44% 0.03 var(--forest-h));
-    --line: oklch(70% 0.05 var(--forest-h) / 0.45);
-    --line-strong: oklch(55% 0.06 var(--forest-h) / 0.5);
-    --accent: oklch(60% 0.14 var(--copper-h));
-    --accent-strong: oklch(53% 0.15 var(--copper-h));
-    --success: oklch(54% 0.13 var(--moss-h));
+  [data-theme='light'] {
+    --bg: oklch(96.5% 0.016 var(--sand-h));
+    --bg-elevated: oklch(99% 0.009 var(--sand-h));
+    --bg-soft: oklch(93% 0.024 var(--sand-h));
+    --fg: oklch(24% 0.045 var(--forest-h));
+    --muted: oklch(38% 0.035 var(--forest-h));
+    --line: oklch(58% 0.065 var(--moss-h) / 0.28);
+    --line-strong: oklch(46% 0.07 var(--moss-h));
+    --accent: oklch(47% 0.13 var(--copper-h));
+    --accent-strong: oklch(43% 0.13 var(--copper-h));
+    --success: oklch(40% 0.105 var(--moss-h));
+    --shadow-deep: 0 24px 64px oklch(30% 0.04 var(--forest-h) / 0.12);
   }
 }

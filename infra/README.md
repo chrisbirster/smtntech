@@ -28,6 +28,22 @@ npm run check
 
 Add AWS credentials to your shell and populate the Cloudflare API token/account ID in `.env`.
 
+### Create the Cloudflare deployment token
+
+The deployment token can be created through Cloudflare's API with the included bootstrap script. Create a temporary bootstrap token in Cloudflare with `Account API Tokens Write` and `Zone Read`, then run:
+
+```bash
+export CLOUDFLARE_DEFAULT_ACCOUNT_ID="your-32-character-account-id"
+export CLOUDFLARE_BOOTSTRAP_TOKEN="your-temporary-bootstrap-token"
+./scripts/create-cloudflare-token.sh
+```
+
+The script resolves the zone and current permission-group IDs, shows the exact account and zone it will target, and asks for confirmation before creating the token. It prints the created token once so it can be copied into `infra/.env`. Delete or revoke the temporary bootstrap token after the deployment token is stored securely.
+
+If `CLOUDFLARE_ZONE_ID` is already present in your shell, the script validates it against the named zone and stops before token creation when it does not match.
+
+Run `./scripts/create-cloudflare-token.sh --help` for optional token name, expiration, zone ID, and KV settings. The current legacy `StaticSite` needs Workers KV permission; the script automatically omits that permission after the stack moves to `StaticSiteV2`.
+
 ## Phase 1
 
 Keep:

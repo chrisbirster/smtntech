@@ -1,0 +1,257 @@
+.editorial {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 2rem;
+  width: min(1440px, calc(100vw - 3rem));
+  padding-bottom: 3.35rem;
+}
+
+.podcastColumn,
+.articlesColumn {
+  min-width: 0;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.sectionHeader span {
+  color: var(--accent);
+  font: 800 1rem var(--font-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.sectionHeader h2 {
+  margin: 0.42rem 0 0;
+  font-size: clamp(1.7rem, 2.2vw, 2.08rem);
+  letter-spacing: -0.04em;
+}
+
+.sectionHeader > a {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--muted);
+  font: 700 1rem var(--font-mono);
+  text-decoration: underline;
+}
+
+.podcastFeature {
+  display: grid;
+  grid-template-columns: minmax(10.8rem, 0.9fr) minmax(12rem, 1.1fr);
+  gap: 1rem;
+  min-height: 30rem;
+  padding: 0.86rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0.8rem;
+  background: linear-gradient(
+    145deg,
+    color-mix(in oklab, var(--bg-elevated) 93%, var(--moss-500) 7%),
+    var(--bg-elevated)
+  );
+}
+
+.podcastCover {
+  display: block;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0.55rem;
+}
+
+.podcastDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 0.2rem 0.15rem;
+}
+
+.comingSoon {
+  align-self: flex-start;
+  margin-bottom: 0.68rem;
+  padding: 0.42rem 0.55rem;
+  border: 1px solid var(--line-strong);
+  color: var(--accent);
+  font: 800 1rem var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.podcastDetails h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.28rem;
+}
+
+.podcastDetails p {
+  margin-bottom: 0.62rem;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.podcastDetails ul {
+  display: grid;
+  gap: 0.44rem;
+  margin: 0.5rem 0 0.9rem;
+  padding: 0.8rem 0;
+  border-block: 1px dashed var(--line);
+  list-style: none;
+}
+
+.podcastDetails li {
+  color: var(--muted);
+  font: 600 1rem/1.45 var(--font-mono);
+}
+
+.podcastDetails li::before {
+  content: '☑';
+  margin-right: 0.42rem;
+  color: var(--success);
+}
+
+.podcastDetails :global(.button) {
+  align-self: flex-start;
+  min-height: 3rem;
+  padding: 0.72rem 0.9rem;
+  font-size: 1rem;
+}
+
+.articleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.72rem;
+}
+
+.articleCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 16rem;
+  padding: 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0.68rem;
+  background: linear-gradient(
+    145deg,
+    color-mix(in oklab, var(--bg-elevated) 94%, var(--moss-500) 6%),
+    var(--bg-elevated)
+  );
+}
+
+.articleCard > span {
+  color: var(--success);
+  font: 800 1rem var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.articleCard:nth-child(even) > span {
+  color: var(--accent);
+}
+
+.articleCard h3 {
+  margin: 0.6rem 0 0.48rem;
+  font-size: 1.03rem;
+  line-height: 1.08;
+}
+
+.articleCard h3 a {
+  text-decoration: none;
+}
+
+.articleCard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.articleCard footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.8rem;
+  color: var(--muted);
+  font: 650 1rem var(--font-mono);
+  text-transform: uppercase;
+}
+
+.articleCard footer a {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  color: var(--fg);
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+:global(html[data-theme='light']) .podcastFeature,
+:global(html[data-theme='light']) .articleCard {
+  box-shadow: 0 18px 44px oklch(30% 0.04 var(--forest-h) / 0.08);
+}
+
+@media (min-width: 1800px) {
+  .editorial {
+    width: min(1600px, calc(100vw - 8rem));
+  }
+}
+
+@media (max-width: 1180px) {
+  .editorial {
+    width: min(100% - 2.4rem, 1120px);
+  }
+}
+
+@media (max-width: 1050px) {
+  .editorial {
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .editorial {
+    grid-template-columns: 1fr;
+    width: min(100% - 2rem, 820px);
+  }
+
+  .podcastFeature {
+    min-height: 23rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .editorial {
+    width: min(100% - 1.25rem, 580px);
+  }
+
+  .articleGrid,
+  .podcastFeature {
+    grid-template-columns: 1fr;
+  }
+
+  .podcastFeature {
+    min-height: auto;
+  }
+
+  .podcastCover {
+    min-height: 22rem;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    min-height: auto;
+  }
+
+  .sectionHeader > a {
+    display: none;
+  }
+}

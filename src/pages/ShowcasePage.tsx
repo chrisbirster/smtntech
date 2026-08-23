@@ -1,4 +1,45 @@
-import { For } from "solid-js";
-import { showcase } from "../data/content";
-import styles from "./Pages.module.css";
-export default function ShowcasePage() { document.title = "Showcase — South Mountain Technologies"; return <><header class={`container ${styles.hero}`}><span class="eyebrow">What are you building?</span><h1>Your side project deserves daylight.</h1><p>Share weekend experiments, open-source libraries, school projects, production apps, hardware, creative coding, or the thing you made just to learn how it works.</p></header><section class={`container ${styles.section}`}><div class={styles.showcaseGrid}><For each={showcase}>{item => <article class={styles.showcaseCard}><div class={styles.showcasePreview}>&gt; {item.title}</div><small>{item.state}</small><h2>{item.title}</h2><p>{item.summary}</p><div><For each={item.tags}>{tag => <span class="tag">{tag}</span>}</For></div></article>}</For></div></section><section class={`container ${styles.section}`}><div class={styles.notice}>The public submission workflow is not live yet. For now, join the community and send your project directly so the showcase can grow with real work instead of fabricated entries.</div></section></>; }
+import PageHero from '../components/PageHero';
+import styles from './Pages.module.css';
+
+export default function ShowcasePage() {
+  document.title = 'Showcase — South Mountain Technologies';
+  return (
+    <>
+      <PageHero
+        eyebrow="What are you building?"
+        title="Your side project deserves daylight."
+        copy="Share the library, app, game, hardware project, production tool, or weekend experiment you’ve been building. Finished is optional."
+        actions={[
+          {
+            label: 'Submit a project',
+            href: 'mailto:chris@southmountaintech.com?subject=Project%20showcase%20submission&body=Project%20name%3A%0AProject%20link%3A%0AWhat%20it%20does%3A%0AWhat%20feedback%20or%20help%20you%20want%3A',
+            primary: true,
+          },
+          { label: 'Meet the community', href: '/community' },
+        ]}
+      />
+      <section class={`container ${styles.section}`}>
+        <div class={styles.feature}>
+          <div>
+            <span class="eyebrow">Community showcase</span>
+            <h2>Show the work. Share the story behind it.</h2>
+            <p>
+              Send a project link, a short description, the tools you used, and the kind of feedback
+              or help you want. Real submissions will be added here as the showcase grows.
+            </p>
+          </div>
+          <aside class={styles.sidebar}>
+            <h3>Good submissions include</h3>
+            <ul>
+              <li>A project, demo, or repository link</li>
+              <li>A short explanation of what it does</li>
+              <li>The stack or tools involved</li>
+              <li>What you learned while building it</li>
+              <li>The feedback or contributions you want</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}

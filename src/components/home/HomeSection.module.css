@@ -1,0 +1,4 @@
+.section {
+  position: relative;
+  margin-block: var(--space-6);
+}

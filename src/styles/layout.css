@@ -1,0 +1,17 @@
+@layer layout {
+  .container {
+    width: var(--page);
+    margin-inline: auto;
+  }
+
+  .surface {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(
+      160deg,
+      color-mix(in oklab, var(--bg-elevated) 96%, var(--moss-500) 4%),
+      var(--bg-elevated)
+    );
+    box-shadow: var(--shadow-deep);
+  }
+}
